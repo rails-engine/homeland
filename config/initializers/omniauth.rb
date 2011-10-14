@@ -9,4 +9,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     provider :github, '6cdd69717d7648e56110', 'dab5745aed84eaa2e03deb6a16da18fb825d228b'
     provider :douban, '0afe615f5a536d9820fb241e0efa48c8','b5ca6ad8f437cfcf'
   end
+  provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
 end
