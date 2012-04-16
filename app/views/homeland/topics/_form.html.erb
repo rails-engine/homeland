@@ -1,0 +1,26 @@
+<%= form_for(@topic) do |f| %>
+  <fieldset>
+    <legend><%= @topic.id.blank? ? "新建帖子" : "修改帖子" %></legend>
+    <%= render "shared/error_messages", :target => @topic %>  
+    <%= f.hidden_field :node_id %>
+    <div class="clearfix">
+      <%= f.label :title %>
+      <div class="input">
+        <%= f.text_field :title, :class => "span7" %>
+      </div>
+    </div>
+     <div class="edit_tools">
+    		<a href="#" onclick="return Topics.addImageClick();" id="add_image">上传图片</a>
+    	</div>
+    <div class="clearfix">
+      <%= f.label :body %>
+      <div class="input">
+        <%= f.text_area :body, :class => "topic_body_text_area xxlarge", :style => "height:400px" %>
+      </div>
+    </div>
+    <div class="actions">
+      <input type="submit" value="保存" class="btn primary"> 
+      <a href="<%= @topic.id.blank? ? topics_path : topic_path(@topic) %>" class="btn">取消</a>
+    </div>
+  </fieldset>
+<% end %>
