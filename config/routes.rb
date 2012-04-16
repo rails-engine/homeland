@@ -1,40 +1,14 @@
-Homeland::Application.routes.draw do
-  resources :notes
-  match "/file/*path" => "gridfs#serve"
-  root :to => "topics#index"  
-  match "auth/:provider/callback", :to => "home#auth_callback"  
-  match "auth/:provider/unbind", :to => "home#auth_unbind"  
-  
-  devise_for :users, :path => "account"
-  resources :users, :path => "u", :only => :show
-  
-  resources :nodes
-  
-  match "n:id" => "topics#node", :as => :node_topics
-  match "t/last" => "topics#recent", :as => :recent_topics
-  resources :topics, :path => "t" do
+Homeland::Engine.routes.draw do
+  resources :topics do
     member do
       post :reply
     end
     collection do
+      get :node
       get :search
       get :feed
+      get :recent
     end
   end
-  resources :replies, :path => "r"
-  resources :photos do
-    collection do
-      get :tiny_new
-    end
-  end
-
-  namespace :cpanel do 
-    root :to => "home#index"
-    resources :replies
-    resources :topics
-    resources :nodes
-    resources :sections
-    resources :users
-    resources :photos
-  end  
+  resources :replies
 end
