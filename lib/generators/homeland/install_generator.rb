@@ -27,6 +27,19 @@ module Homeland
         end
       end
       
+      def add_locales
+        %w(zh-CN.yml).each do |fname|
+          path = "#{Rails.root}/config/locales/homeland.#{fname}"
+          if File.exists?(path)
+            puts "Skipping config/locales/homeland.#{fname} creation, as file already exists!"
+          else
+            puts "Adding assets (config/locales/homeland.#{fname})..."
+            template "locales/homeland.#{fname}", path
+          end
+        end
+      end
+      
+      
     end
 	end
 end
