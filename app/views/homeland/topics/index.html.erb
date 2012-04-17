@@ -1,5 +1,11 @@
 <%= render 'base' %>
-
+<% content_for :breadcrumb do %>
+	<% if @node.blank? %>
+	  <li>首页</li>
+  <% else %>
+    <li><%= @node.name %></li>
+	<% end %>
+<% end %>
 <%= render 'sidebar' %>
 
 <div class="content">
@@ -12,7 +18,7 @@
       </p>
     </div>
     <% else %>
-      <h1><%= Setting.app_name %>论坛</h1>
+      <h1><%= Setting.app_name %></h1>
     <% end %>
     <div class="topics">
 	 <%= render :partial => "topic", :collection => @topics %>
@@ -28,7 +34,7 @@
 	</div>
 	<% if params[:action] == "index" %>
 	<div id="sections" class="box">
-	<h2>讨论节点分类导航</h2>
+	<h2>节点分类导航</h2>
 	<ul>
 		<% @sections.each do |section| %>
 		<li>
