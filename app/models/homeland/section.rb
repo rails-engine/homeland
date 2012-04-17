@@ -6,7 +6,7 @@ module Homeland
 
     field :name
     field :sort, :type => Integer, :default => 0
-    has_many :nodes, :dependent => :destroy
+    has_many :nodes, :dependent => :destroy, :class_name => "Homeland::Node"
   
     validates_presence_of :name
     validates_uniqueness_of :name

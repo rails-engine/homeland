@@ -1,3 +1,6 @@
+#= require jquery.hotkeys
+#= require jquery.timeago
+#= require_self
 # TopicsController 下所有页面的 JS 功能
 window.Topics =
   # 往话题编辑器里面插入图片代码
@@ -38,8 +41,8 @@ window.Topics =
     
 # Page.ready
 $(document).ready ->
+  $("abbr.timeago").timeago()
   $("textarea").bind "keydown","ctrl+return",(el) ->
     if $(el.target).val().trim().length > 0
       $("#reply form").submit()
-    return false
   

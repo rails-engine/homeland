@@ -1,6 +1,7 @@
 # coding: utf-8
 module Homeland
-  class RepliesController < ApplicationController
+  class RepliesController < Homeland::ApplicationController
+    before_filter :homeland_require_user
   
     def edit
       @reply = current_user.replies.find(params[:id])
