@@ -1,4 +1,4 @@
-A new style forum for small communitys as a Rails Engine. you can mount this in you any apps.
+A new style forum for tiny community as Rails Engine. You can mount this in you apps.
 
 ## Install
 
@@ -8,11 +8,11 @@ A new style forum for small communitys as a Rails Engine. you can mount this in 
 
     gem "homeland"
 
-1. Install thought this commands:    
+2. Install thought this commands:    
 
     rails g homeland:install
     
-2. change you application.html.erb
+3. change you application.html.erb
 
 before:
     
