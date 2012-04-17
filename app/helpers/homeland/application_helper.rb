@@ -19,7 +19,7 @@ module Homeland
     
     def user_avatar_tag(user)
       return "" if user.blank?
-      img = image_tag(user.try(Homeland.user_avatar_method.to_sym).url(:small))
+      img = image_tag(user.try(Homeland.user_avatar_method.to_sym))
       link_to_if(Homeland.user_path_method, raw(img), [main_app, user])
     end
     
