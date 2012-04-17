@@ -2,6 +2,7 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
+*.gem
 .sass-cache/
 public/assets/
 config/database.yml
