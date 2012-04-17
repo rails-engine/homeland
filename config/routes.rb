@@ -1,4 +1,6 @@
 Homeland::Engine.routes.draw do
+  root :to => "topics#index"
+  match "topics/node_:id", :to => "topics#node", :as => :node_topics
   resources :topics do
     member do
       post :reply
