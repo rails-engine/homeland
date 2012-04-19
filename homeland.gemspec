@@ -1,7 +1,7 @@
 # coding: utf-8
 Gem::Specification.new do |s|
   s.name        = "homeland"
-  s.version     = "0.0.3"
+  s.version     = "0.0.4"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jason Lee"]
   s.email       = ["huacnlee@gmail.com"]
@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   
   s.add_dependency("rails", "> 3.1.0")
+  s.add_dependency("jquery-atwho-rails", "~> 0.1.5")
 
   s.files        = Dir.glob("lib/**/*") + Dir.glob("app/**/*") + Dir.glob("config/**/*") + %w(README.markdown)
   s.require_path = 'lib'

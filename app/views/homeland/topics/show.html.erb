@@ -62,6 +62,13 @@
         </div>
       </div>
     <% end %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        atDatas = []
+        $(".reply .name a").text(function(idx,text) { atDatas.push(text) });
+        $('#reply_body').atWho("@",{'data':atDatas});
+      })
+    </script>
   </div>
   <% end %>
 	<% if current_user %>
@@ -69,7 +76,7 @@
     <h4>回复</h4>
     <%= form_for(Homeland::Reply.new,:url => reply_topic_path(params[:id])) do |f| %>
       <div class="pull-right">
-        <button type="submit" class="btn primary">提交回复</button><br />
+        <button type="submit" class="btn btn-primary">提交回复</button><br />
         <span class="help-inline">Ctrl+Enter</span>
       </div>
       <div class="clearfix">
@@ -81,7 +88,7 @@
 	<% else %>
 	<div id="reply" class="form box">
 		<div style="padding:20px;">
-		需要 <a href='/account/sign_in' class="btn primary">登录</a> 后回复方可回复, 如果你还没有账号 <a href="/account/sign_up" class="btn danger"> 点击这里注册</a>。
+		需要 <a href='/account/sign_in' class="btn btn-primary">登录</a> 后回复方可回复, 如果你还没有账号 <a href="/account/sign_up" class="btn btn-success"> 点击这里注册</a>。
 		</div>
 	</div>
 	<% end %>

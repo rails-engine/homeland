@@ -60,8 +60,13 @@ module Homeland
     # GET /topics/new.xml
     def new
       @topic = Topic.new
-      @topic.node_id = params[:node]
-      @node = Node.find(params[:node])
+      if !params[:node].blank?
+        @topic.node_id = params[:node]
+        @node = Node.find_by_id(params[:node])
+        if @node.blank?
+          render_404
+        end
+      end
     end
 
     def reply
@@ -73,7 +78,7 @@ module Homeland
       else
         flash[:notice] = @reply.errors.full_messages.join("<br />")
       end
-      redirect_to topic_path(params[:id],:anchor => 'reply')
+      redirect_to topic_path(params[:id],:anchor => "reply")
     end
 
     # GET /topics/1/edit
