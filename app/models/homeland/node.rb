@@ -20,5 +20,12 @@ module Homeland
 
     scope :hots, desc(:topics_count)
     scope :sorted, desc(:sort)
+
+    # 热门节电给 select 用的
+    def self.node_collection
+      Rails.cache.fetch("node:node_collection:#{CacheVersion.section_node_updated_at}") do
+        Node.all.collect { |n| [n.name,n.id] }
+      end
+    end
   end
 end

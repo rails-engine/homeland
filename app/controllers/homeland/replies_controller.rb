@@ -11,7 +11,7 @@ module Homeland
       @reply = current_user.replies.find(params[:id])
 
       if @reply.update_attributes(params[:reply])
-        redirect_to(topic_path(@reply.topic_id), :notice => '回帖删除成功.')
+        redirect_to(topic_path(@reply.topic_id,:anchor => "reply#{@reply.topic.replies_count}"), :notice => '回帖更新成功.')
       else
         render :action => "edit"
       end

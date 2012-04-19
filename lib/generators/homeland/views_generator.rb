@@ -9,7 +9,6 @@ module Homeland
       def copy_views
         view_directory :replies
         view_directory :shared
-        view_directory :topic_mailer
         view_directory :topics
       end
 

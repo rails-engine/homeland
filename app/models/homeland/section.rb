@@ -13,5 +13,9 @@ module Homeland
   
   
     default_scope desc(:sort)
+
+    def sorted_nodes
+      self.nodes.sorted
+    end
   end
 end

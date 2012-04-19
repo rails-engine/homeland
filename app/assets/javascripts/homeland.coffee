@@ -1,5 +1,7 @@
 #= require jquery.hotkeys
 #= require jquery.timeago
+#= require jquery.atwho
+#= require jquery.chosen
 #= require_self
 # TopicsController 下所有页面的 JS 功能
 window.Topics =
@@ -42,6 +44,7 @@ window.Topics =
 # Page.ready
 $(document).ready ->
   $("abbr.timeago").timeago()
+  $("select").chosen()
   $("textarea").bind "keydown","ctrl+return",(el) ->
     if $(el.target).val().trim().length > 0
       $("#reply form").submit()
