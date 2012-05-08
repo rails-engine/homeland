@@ -1,0 +1,19 @@
+defaults: &defaults
+  host: '127.0.0.1'
+  identity_map_enabled: true
+
+development:
+  <<: *defaults
+  host: localhost
+  database: homeland_dump_dev
+  identity_map_enabled: true
+
+test:
+  <<: *defaults
+  host: localhost
+  database: homeland_dump_test
+
+production:
+  <<: *defaults
+  host: localhost
+  database: homeland_dump
