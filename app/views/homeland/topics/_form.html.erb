@@ -1,7 +1,7 @@
 <%= form_for(@topic) do |f| %>
   <fieldset>
     <legend><%= @topic.id.blank? ? "新建帖子" : "修改帖子" %></legend>
-    <%= render "shared/error_messages", :target => @topic %>  
+    <%= render "homeland/shared/error_messages", :target => @topic %>  
     <%= f.hidden_field :node_id %>
     <div class="clearfix">
       <%= f.label :title %>
