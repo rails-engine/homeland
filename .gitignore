@@ -11,6 +11,8 @@ config/config.yml
 config/mongoid.yml
 config/mailer_daemon.yml
 public/uploads/**/*
+spec/dummy/tmp
+spec/dummy/log
 public/t
 public/t/**/*
 .redcar

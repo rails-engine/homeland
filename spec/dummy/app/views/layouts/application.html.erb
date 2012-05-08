@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dummy</title>
+  <%= stylesheet_link_tag "app" %>
+  <%= javascript_include_tag "app" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+  <div class="container">
+    <div class="navbar">
+      <li><%= link_to "BBS", homeland.topics_path %></li>
+      <% if current_user %>
+        Hello, <%= link_to current_user.email, main_app.user_path(current_user) %>
+        <%= link_to "Sign out", main_app.destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Sign in", main_app.session_path(:user) %> / 
+        <%= link_to "Sign up", main_app.new_user_registration_path %>
+      <% end %>
+    </div>
+    <%= yield %>
+  </div>
+
+</body>
+</html>
