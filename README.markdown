@@ -23,6 +23,10 @@ after:
 
     <%= link_to "Home", main_app.root_path %>
     <%= link_to "Home", main_app.posts_path %>
+
+4. Change you routes.rb to add this:
+
+    mount Homeland::Engine, :at => "/bbs"
     
 
 ## Generate views to custom
