@@ -2,6 +2,7 @@
 module Homeland  
   module TopicsHelper
     def format_topic_body(text,title = "",allow_image = true)
+      text.gsub!(/\!\[(.+?|)\]\((http:\/\/.+?)\)/i,'<img src="\2" alt="\1" />')
       auto_link(simple_format(text),:all, :target => '_blank', :rel => "nofollow")
     end
 

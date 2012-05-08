@@ -62,11 +62,12 @@ module Homeland
       @topic = Topic.new
       if !params[:node].blank?
         @topic.node_id = params[:node]
-        @node = Node.find_by_id(params[:node])
+        @node = Node.where(:_id => params[:node]).first
         if @node.blank?
-          render_404
+          redirect_to "/404"
         end
       end
+      @topic.id = nil
     end
 
     def reply
