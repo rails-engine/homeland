@@ -1,3 +1,7 @@
+0.0.6 / 2012-05-28
+
+  * Remove hits field from Topic model.
+
 0.0.5 / 2012-05-08
 
   * Add test app.
