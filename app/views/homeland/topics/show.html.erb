@@ -5,10 +5,10 @@
 <%= render 'sidebar' %>
 <div class="content">
 	<div class="topics box">
-		<div class="topic">  
+		<div class="topic">
 		  <div class="pull-right avatar_large">
 				<%= user_avatar_tag(@topic.user) %>
-			</div>  
+			</div>
 	    <div class="infos">
 				<h1><%= truncate(@topic.title, :length => 100) %></h1>
 				<div class="info leader">
@@ -21,9 +21,8 @@
 					<% else %>
 						最后由 <%= user_name_tag(@topic.last_reply_user) %> 回复于 <%= timeago(@topic.replied_at) %>
 					<% end %>
-					, <%= @topic.hits %> 次阅读
 				</div>
-			</div>			
+			</div>
 		</div>
 		<div class="body">
 			<%= format_topic_body(@topic.body) %>

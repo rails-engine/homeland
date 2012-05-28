@@ -1,4 +1,4 @@
-# coding: utf-8  
+# coding: utf-8
 module Homeland
   class TopicsController < Homeland::ApplicationController
     before_filter :homeland_require_user, :only => [:new,:edit,:create,:update,:destroy,:reply]
@@ -6,7 +6,7 @@ module Homeland
     caches_page :feed, :expires_in => 1.hours
 
     private
-    def init_list_sidebar 
+    def init_list_sidebar
      if !fragment_exist? "topic/init_list_sidebar/hot_nodes"
         @hot_nodes = Node.hots.limit(20)
       end
@@ -20,7 +20,7 @@ module Homeland
       @sections = Section.all
 
     end
-  
+
     def feed
       @topics = Topic.recent.limit(20)
       response.headers['Content-Type'] = 'application/rss+xml'
@@ -44,13 +44,12 @@ module Homeland
       result = Redis::Search.query("Topic", params[:key], :limit => 500)
       ids = result.collect { |r| r["id"] }
       @topics = Topic.find(ids).paginate(:page => params[:page], :per_page => 20)
-      
+
       render :action => "index"
     end
 
     def show
       @topic = Topic.find(params[:id])
-      @topic.hit!
       @node = @topic.node
       @replies = @topic.replies.all
 
@@ -72,7 +71,7 @@ module Homeland
 
     def reply
       @topic = Topic.find(params[:id])
-      @reply = @topic.replies.build(params[:reply])        
+      @reply = @topic.replies.build(params[:reply])
       @reply.user_id = current_user.id
       if @reply.save
         flash[:notice] = "回复成功。"
