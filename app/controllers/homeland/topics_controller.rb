@@ -51,8 +51,7 @@ module Homeland
     def show
       @topic = Topic.find(params[:id])
       @node = @topic.node
-      @replies = @topic.replies.all
-
+      @replies = @topic.replies.all.includes(:user)
     end
 
     # GET /topics/new
