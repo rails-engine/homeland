@@ -1,7 +1,7 @@
 # coding: utf-8
 Gem::Specification.new do |s|
   s.name        = "homeland"
-  s.version     = "0.0.6"
+  s.version     = "0.0.7"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jason Lee"]
   s.email       = ["huacnlee@gmail.com"]
