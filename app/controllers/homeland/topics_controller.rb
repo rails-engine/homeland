@@ -16,7 +16,7 @@ module Homeland
     # GET /topics
     # GET /topics.xml
     def index
-      @topics = Topic.last_actived.limit(10)
+      @topics = Topic.last_actived.limit(10).includes(:user)
       @sections = Section.all
 
     end
@@ -29,21 +29,13 @@ module Homeland
 
     def node
       @node = Node.find(params[:id])
-      @topics = @node.topics.last_actived.paginate(:page => params[:page],:per_page => 50)
+      @topics = @node.topics.last_actived.includes(:user).paginate(:page => params[:page],:per_page => 50)
 
       render :action => "index"
     end
 
     def recent
-      @topics = Topic.recent.limit(50)
-
-      render :action => "index"
-    end
-
-    def search
-      result = Redis::Search.query("Topic", params[:key], :limit => 500)
-      ids = result.collect { |r| r["id"] }
-      @topics = Topic.find(ids).paginate(:page => params[:page], :per_page => 20)
+      @topics = Topic.recent.limit(50).includes(:user)
 
       render :action => "index"
     end
