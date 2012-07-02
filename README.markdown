@@ -24,10 +24,10 @@ A new style forum for tiny community as Rails Engine. You can mount this in you 
 
   before:
     
-    ```erb
-    <%= link_to "Home", root_path %>
-    <%= link_to "Posts", posts_path %>
-    ```
+   ```erb
+   <%= link_to "Home", root_path %>
+   <%= link_to "Posts", posts_path %>
+   ```
     
   after:
 
@@ -45,9 +45,9 @@ A new style forum for tiny community as Rails Engine. You can mount this in you 
 
 ## Generate views to custom
 
-    ```bash
-    rails g homeland:views
-    ```
+```bash
+rails g homeland:views
+```
     
 ## Demo App
 
@@ -56,3 +56,4 @@ A new style forum for tiny community as Rails Engine. You can mount this in you 
 ----
 
 Thanks [V2EX](http://www.v2ex.com/?r=huacnlee) forum idea.
+A new style forum for tiny community as Rails Engine. You can mount this in you apps.
