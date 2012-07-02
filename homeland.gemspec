@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
   s.add_dependency("jquery-atwho-rails", "~> 0.1.5")
   s.add_dependency("rails_autolink", ">= 1.0.0")
 
-  s.files        = Dir.glob("lib/**/*") + Dir.glob("app/**/*") + Dir.glob("config/**/*") + %w(README.markdown)
+  s.files        = Dir.glob("lib/**/*") + Dir.glob("app/**/*") + Dir.glob("config/**/*") + %w(README.md Changelogs.md)
   s.require_path = 'lib'
 end
