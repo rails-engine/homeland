@@ -1,8 +1,7 @@
 source 'http://ruby.taobao.org'
 
 gem "rails", "3.1.1"
-gem "mongoid", "2.4.8"
-gem "bson_ext", "1.6.2"
+gem "mongoid", "3.0.0.rc"
 gem "devise"
 gem 'will_paginate', '3.0.pre2'
 gem "bluecloth","2.1.0"

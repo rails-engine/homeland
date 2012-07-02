@@ -1,19 +1,28 @@
 defaults: &defaults
-  host: '127.0.0.1'
-  identity_map_enabled: true
+  options:
+    identity_map_enabled: true
 
 development:
   <<: *defaults
-  host: localhost
-  database: homeland_dump_dev
-  identity_map_enabled: true
+  sessions:
+    default:
+      hosts:
+        - 127.0.0.1:27017
+      database: homeland_dump_dev
 
 test:
   <<: *defaults
-  host: localhost
-  database: homeland_dump_test
+  sessions:
+    default:
+      hosts:
+        - 127.0.0.1:27017
+      database: homeland_dump_test
 
+# set these environment variables on your prod server
 production:
   <<: *defaults
-  host: localhost
-  database: homeland_dump
+  sessions:
+    default:
+      hosts:
+        - 127.0.0.1:27017
+      database: homeland_dump

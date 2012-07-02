@@ -6,12 +6,15 @@ class User
   devise :database_authenticatable, :registerable
 
   ## Database authenticatable
-  field :email,              :type => String, :null => false, :default => ""
-  field :encrypted_password, :type => String, :null => false, :default => ""
-  field :name
+  field :email, :default => ""
+  field :encrypted_password, :default => ""
 
   def avatar_small_url
-    ""
+    "/assets/avatar/normal.gif"
+  end
+
+  def name
+    self.email.split("@").first
   end
 
   def to_param

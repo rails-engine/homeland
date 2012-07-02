@@ -18,9 +18,9 @@ module Homeland
     attr_protected :user_id
     validates_presence_of :user_id, :title, :body, :node_id
 
-    index :replied_at
-    index :user_id
-    index :node_id
+    index :replied_at => -1
+    index :user_id => 1
+    index :node_id => 1
 
     # scopes
     scope :last_actived, desc(:replied_at).desc(:_id)

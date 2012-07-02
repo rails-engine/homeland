@@ -1,7 +1,7 @@
 # coding: utf-8
 Gem::Specification.new do |s|
   s.name        = "homeland"
-  s.version     = "0.0.7"
+  s.version     = "0.0.8"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jason Lee"]
   s.email       = ["huacnlee@gmail.com"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = "A new style forum for small communitys."
 
   s.required_rubygems_version = ">= 1.3.6"
-  
+
   s.add_dependency("rails", "> 3.1.0")
   s.add_dependency("jquery-atwho-rails", "~> 0.1.5")
   s.add_dependency("rails_autolink", ">= 1.0.0")
