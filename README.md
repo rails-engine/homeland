@@ -8,19 +8,19 @@ A new style forum for tiny community as Rails Engine. You can mount this in you 
 
 ## Install
 
-1. in you Gemfile:
+1. In your Gemfile:
 
     ```ruby
     gem "homeland"
     ```
 
-2. Install thought this commands:
+2. Install through this command:
 
    ```bash
    rails g homeland:install
    ```
 
-3. change you application.html.erb
+3. Change your application.html.erb
 
   before:
 
@@ -37,7 +37,7 @@ A new style forum for tiny community as Rails Engine. You can mount this in you 
     ```
 
 
-4. Change you routes.rb to add this:
+4. Add this to your routes.rb:
 
     ```ruby
     mount Homeland::Engine, :at => "/bbs"
