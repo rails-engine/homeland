@@ -3,6 +3,7 @@ module Homeland
     include Homeland::Concerns::SoftDelete
     include Homeland::Concerns::MarkdownBody
     include Homeland::Concerns::UserMethods
+    include Homeland::Concerns::Pagination
 
     belongs_to :user, class_name: Homeland.config.user_class.to_s
     belongs_to :topic, class_name: 'Homeland::Topic'

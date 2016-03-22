@@ -4,21 +4,21 @@ module Homeland
     before_filter :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :reply]
 
     def index
-      @topics = Topic.latest.includes(:user).limit(10)
+      @topics = Topic.latest.includes(:user).page(params[:page])
 
       set_seo_meta(t("homeland.nav.latest"))
     end
 
     def node
       @node = Node.find(params[:id])
-      @topics = @node.topics.latest.includes(:user).limit(50)
+      @topics = @node.topics.latest.includes(:user).page(params[:page])
 
       render action: "index"
     end
 
     %w(recent features).each do |action|
       define_method(action) do
-        @topics = Topic.send(action).includes(:user, :node).limit(20)
+        @topics = Topic.send(action).includes(:user, :node).page(params[:page])
 
         set_seo_meta(t("homeland.nav.#{action}"))
 
@@ -28,7 +28,7 @@ module Homeland
 
     def show
       @topic = Topic.find(params[:id])
-      @replies = @topic.replies.includes(:user)
+      @replies = @topic.replies.includes(:user).page(params[:page])
 
       set_seo_meta(@topic.title)
     end

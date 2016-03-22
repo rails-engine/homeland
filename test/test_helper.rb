@@ -1,6 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
-
-require 'rails'
+require File.expand_path('../dummy/config/environment', __FILE__)
+require 'rails/test_help'
 require 'factory_girl_rails'
 
 class ActiveSupport::TestCase

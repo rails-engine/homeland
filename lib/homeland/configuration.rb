@@ -56,6 +56,6 @@ module Homeland
     attr_accessor :app_name
 
     # pagination size, default: 32
-    attr_accessor :per_size
+    attr_accessor :per_page
   end
 end
