@@ -17,6 +17,7 @@ module Homeland
 
     after_commit :update_topic_last_reply_at, on: [:create, :update]
     def update_topic_last_reply_at
+      return if self.topic.blank?
       self.topic.replied_at = Time.now
       self.topic.last_active_mark = Time.now.to_i
       self.topic.last_reply_user_id = self.user_id

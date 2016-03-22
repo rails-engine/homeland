@@ -1,6 +1,8 @@
 Homeland
 --------
 
+[![Gem Version](https://badge.fury.io/rb/homeland.svg)](https://badge.fury.io/rb/homeland) [![Build Status](https://travis-ci.org/huacnlee/homeland.svg)](https://travis-ci.org/huacnlee/homeland)
+
 > A new style forum for tiny community as Rails Engine. You can mount this in any of you Rails apps.
 
 我们时常可能需要在各类中小型项目中集成用户社区之类的功能，每次当你需要做这个事情的时候都重头设计实现一遍么？ No, that no the Rails way! Rails 教育我们要 DRY!

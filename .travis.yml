@@ -1,0 +1,14 @@
+language: ruby
+env:
+  - USE_OFFICIAL_GEM_SOURCE=1
+
+services:
+  - mysql
+
+rvm:
+  - 2.3.0
+
+before_script:
+  - RAILS_ENV=test rake db:migrate
+
+script: RAILS_ENV=test rake test
