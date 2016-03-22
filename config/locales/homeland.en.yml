@@ -21,6 +21,7 @@ en:
     topics:
       empty: 'Ther have no subject created.'
       type_reply: 'Write your reply here...'
+      reply_to: "Reply To"
     submiting: 'Submiting...'
     submit: 'Submit'
     cancel: 'Cancel'

@@ -19,6 +19,25 @@
   border-radius: 180px;
 }
 
+.btn-opt {
+  line-height: 100%;
+  padding: 6px 8px 8px 8px;
+  font-size: 14px;
+  display: inline-block;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: #555;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background: #F0F0F0;
+  }
+}
+
 .topics {
   .topic {
     font-size: 13px;
@@ -64,24 +83,18 @@
       .date { color: #999; font-size: 13px; }
     }
 
-    .media-footer {
-      a {
-        line-height: 100%;
-        padding: 6px 8px 8px 8px;
+    .reply-to {
+      font-size: 12px;
+      background: #f9f9f9;
+
+      .heading {
         font-size: 14px;
-
-        &:link,
-        &:visited,
-        &:active {
-          color: #555;
-          text-decoration: none;
-        }
-
-        &:hover {
-          text-decoration: none;
-          background: #F0F0F0;
-        }
       }
+
+      .opts {
+      }
+    }
+    .media-footer {
     }
   }
 }

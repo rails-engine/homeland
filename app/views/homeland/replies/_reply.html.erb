@@ -1,3 +1,6 @@
+<%
+is_reply = reply.respond_to?(:reply_to_id)
+%>
 <div class="reply media" id="reply-<%= reply.id %>" data-id="<%= reply.id %>">
   <div class="media-left">
     <%= homeland_user_avatar_tag(reply) %>
@@ -8,13 +11,19 @@
 
       <span class="date pull-xs-right"><i class="fa fa-clock-o"></i> <%= homeland_timeago reply.created_at %></span>
     </div>
+
     <div class="markdown">
       <%= raw reply.body_html %>
     </div>
-    <div class="media-footer">
+
+    <div class="media-footer clearfix">
+      <% if is_reply && reply.reply_to_id %>
+      <a href="#reply-<%= reply.reply_to_id %>" title="<%= t('homeland.topics.reply_to') %>" class="btn-opt"><i class="fa fa-quote-left"></i></a>
+      <% end %>
+
       <span class="pull-xs-right">
-        <a href="<%= homeland.topic_path(@topic, anchor: "reply-#{reply.id}") %>" class="anchor"><i class="fa fa-link"></i></a>
-        <a href="#" class="reply"><i class="fa fa-reply"></i> <%= t('homeland.reply') %></a>
+        <a href="<%= homeland.topic_path(@topic, anchor: "reply-#{reply.id}") %>" class="btn-opt anchor"><i class="fa fa-link"></i></a>
+        <a href="#" class="btn-opt" data-action="reply" data-reply-id="<%= is_reply ? reply.id : ''  %>"><i class="fa fa-reply"></i> <%= t('homeland.reply') %></a>
       </span>
     </div>
   </div>

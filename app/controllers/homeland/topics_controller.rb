@@ -28,7 +28,7 @@ module Homeland
 
     def show
       @topic = Topic.find(params[:id])
-      @replies = @topic.replies.includes(:user).page(params[:page])
+      @replies = replies
 
       set_seo_meta(@topic.title)
     end
@@ -93,12 +93,16 @@ module Homeland
 
     private
 
+    def replies
+      @topic.replies.includes(:user).page(params[:page])
+    end
+
     def topic_params
       params.require(:topic).permit(:node_id, :title, :body)
     end
 
     def reply_params
-      params.require(:reply).permit(:body)
+      params.require(:reply).permit(:body, :reply_to_id)
     end
   end
 end

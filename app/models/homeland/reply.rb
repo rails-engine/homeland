@@ -7,6 +7,9 @@ module Homeland
 
     belongs_to :user, class_name: Homeland.config.user_class.to_s
     belongs_to :topic, class_name: 'Homeland::Topic'
+    belongs_to :reply_to, class_name: 'Homeland::Reply'
+
+    has_many :replies, class_name: "Homeland::Reply", foreign_key: "reply_to_id"
 
     validates :user_id, :body, :topic_id, presence: true
 

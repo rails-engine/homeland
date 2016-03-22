@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321150725) do
+ActiveRecord::Schema.define(version: 20160322062228) do
 
   create_table "homeland_nodes", force: :cascade do |t|
     t.string   "name",         limit: 255,             null: false
@@ -26,15 +26,17 @@ ActiveRecord::Schema.define(version: 20160321150725) do
   add_index "homeland_nodes", ["sort"], name: "index_homeland_nodes_on_sort", using: :btree
 
   create_table "homeland_replies", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "topic_id",   limit: 4
-    t.text     "body",       limit: 65535
-    t.text     "body_html",  limit: 65535
+    t.integer  "user_id",     limit: 4
+    t.integer  "topic_id",    limit: 4
+    t.text     "body",        limit: 65535
+    t.text     "body_html",   limit: 65535
     t.datetime "deleted_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "reply_to_id", limit: 4
   end
 
+  add_index "homeland_replies", ["reply_to_id"], name: "index_homeland_replies_on_reply_to_id", using: :btree
   add_index "homeland_replies", ["topic_id"], name: "index_homeland_replies_on_topic_id", using: :btree
   add_index "homeland_replies", ["user_id"], name: "index_homeland_replies_on_user_id", using: :btree
 
