@@ -1,10 +1,12 @@
 <div class="reply media" data-id="<%= reply.id %>">
   <div class="media-left">
-    <img class="media-object" src="//ruby-china-files.b0.upaiyun.com/user/large_avatar/2.jpg" alt="Generic placeholder image">
+    <%= homeland_user_avatar_tag(reply) %>
   </div>
   <div class="media-body">
     <div class="media-heading">
-      <span class="date pull-xs-right"><%= timeago reply.created_at %></span>
+      <%= homeland_user_name_tag(reply) %>
+
+      <span class="date pull-xs-right"><%= homeland_timeago reply.created_at %></span>
     </div>
     <div class="markdown">
       <%= raw reply.body_html %>

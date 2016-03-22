@@ -1,24 +1,12 @@
 <div class="row">
   <div class="topic-detail col-lg-9">
-    <h1><%= @topic.title %></h1>
-    <div class="info">
-      <%= node_tag(@topic.node) %>
-    </div>
+    <h1>
+      <%= @topic.title %>
+      <%= homeland_node_tag(@topic.node) %>
+    </h1>
 
-    <div class="reply media">
-      <div class="media-left">
-        <img class="media-object" src="//ruby-china-files.b0.upaiyun.com/user/large_avatar/2.jpg" alt="Generic placeholder image">
-      </div>
-      <div class="media-body">
-        <div class="media-heading">
-          <%= %>
-
-          <span class="date pull-xs-right"><%= timeago @topic.created_at %></span>
-        </div>
-        <div class="markdown">
-          <%= raw @topic.body_html %>
-        </div>
-      </div>
+    <div class="topic-content">
+      <%= render partial: 'homeland/replies/reply', locals: { reply: @topic } %>
     </div>
 
     <div class="replies">

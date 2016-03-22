@@ -3,14 +3,15 @@
     <%= link_to topic.title, homeland.topic_path(topic) %>
   </td>
   <td class="node">
-    <%= node_tag(topic.node) %>
+    <%= homeland_node_tag(topic.node) %>
   </td>
   <td class="author">
+    <%= homeland_user_avatar_tag(topic) %>
   </td>
   <td class="replies">
     <%= topic.replies_count %>
   </td>
   <td class="activity">
-    <%= timeago topic.updated_at %>
+    <%= homeland_timeago topic.updated_at %>
   </td>
 </tr>
