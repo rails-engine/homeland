@@ -16,7 +16,12 @@ require 'minitest/mock'
 require 'simplecov'
 
 FactoryGirl.find_definitions
+
 SimpleCov.start
+if ENV['CI']=='true'
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
 
 Homeland.configure do
   self.user_avatar_method = 'avatar_url'

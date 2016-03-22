@@ -6,6 +6,5 @@ group :development, :test do
   gem 'minitest'
   gem 'factory_girl'
   gem 'simplecov'
-
-  gem 'redcarpet'
+  gem 'codecov'
 end
