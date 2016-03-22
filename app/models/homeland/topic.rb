@@ -19,5 +19,9 @@ module Homeland
     def set_last_active_mark
       self.last_active_mark = Time.now.to_i
     end
+
+    def activity_at
+      self.replied_at || self.updated_at || self.created_at
+    end
   end
 end
