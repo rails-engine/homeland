@@ -1,10 +1,13 @@
+Homeland
+--------
+
 A new style forum for tiny community as Rails Engine. You can mount this in you apps.
 
 ## Requrements
 
-  * Rails 3.1
-  * Mongoid 2.4.x or 3.0.0.rc
-  * rails_autolink
+  * Rails 4.2.x+
+  * ActiveRecord
+  * Bootstrap 3.2 (Or not if you rewirte views)
 
 ## Install
 
@@ -13,6 +16,8 @@ A new style forum for tiny community as Rails Engine. You can mount this in you 
     ```ruby
     gem "homeland"
     ```
+
+and then run `bundle install`.
 
 2. Install through this command:
 
@@ -40,31 +45,34 @@ A new style forum for tiny community as Rails Engine. You can mount this in you 
 4. Add this to your routes.rb:
 
     ```ruby
-    mount Homeland::Engine, :at => "/bbs"
+    mount Homeland::Engine, at: "/homeland"
     ```
 
-## Generate views to custom
+## Generate views for custom by your self.
 
 ```bash
 rails g homeland:views
 ```
 
-## How to test Homeland
+## Development Homeland
 
 ```bash
 $ bundle install
-$ cd spec/dummy
+$ cd test/dummy
+$ rake db:create
+$ rake db:migrate
+$ rake db:seed
 $ rails s
-INFO  WEBrick 1.3.1
-INFO  ruby 1.9.3 (2012-04-20) [x86_64-darwin11.4.0]
-INFO  WEBrick::HTTPServer#start: pid=9720 port=3000
+```
+
+And then visit: http://localhost:3000
+
+### Generate Homeland Migration into dummy path
+
+```bash
+$ rake homeland:install:migrations
 ```
 
 ## Demo App
 
 * [http://720p.so/bbs](http://720p.so/bbs)
-
-----
-
-Thanks [V2EX](http://www.v2ex.com/?r=huacnlee) forum idea.
-A new style forum for tiny community as Rails Engine. You can mount this in you apps.

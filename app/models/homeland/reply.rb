@@ -1,26 +1,19 @@
-# coding: utf-8
 module Homeland
-  class Reply
-    include Mongoid::Document
-    include Mongoid::Timestamps
-    include Mongoid::Paranoia
+  class Reply < ActiveRecord::Base
+    include Homeland::Concerns::SoftDelete
+    include Homeland::Concerns::MarkdownBody
 
-    field :body
+    belongs_to :user, class_name: Homeland.config.user_class.to_s
+    belongs_to :topic, class_name: 'Homeland::Topic'
 
-    belongs_to :user, :inverse_of => :replies, :class_name => Homeland.user_class.to_s
-    belongs_to :topic, :inverse_of => :replies, :class_name => "Homeland::Topic"
+    validates :user_id, :body, :topic_id, presence: true
 
-    attr_protected :user_id, :topic_id
+    scope :recent, -> { order('id desc') }
 
-    index :topic_id => 1
-    index :user_id => 1
-
-    validates_presence_of :body
-    scope :recent, desc(:_id)
-
-    after_create :update_parent_last_replied
-    def update_parent_last_replied
+    after_commit :update_topic_last_reply_at, on: [:create, :update]
+    def update_topic_last_reply_at
       self.topic.replied_at = Time.now
+      self.topic.last_active_mark = Time.now.to_i
       self.topic.last_reply_user_id = self.user_id
       self.topic.replies_count = self.topic.replies.count
       self.topic.save

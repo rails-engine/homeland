@@ -1,18 +1,19 @@
-source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
 
-gem "rails", "3.1.1"
-gem "mongoid", "3.0.0.rc"
-gem "devise"
-gem 'will_paginate', '3.0.pre2'
-gem "bluecloth","2.1.0"
-gem "jquery-atwho-rails"
-gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
-gem "jquery-rails"
-gem "rails_autolink"
+# Declare your gem's dependencies in homeland.gemspec.
+# Bundler will treat runtime dependencies like base dependencies, and
+# development dependencies will be added by default to the :development group.
+gemspec
 
-gem "sass-rails"
-gem 'coffee-rails'
-gem 'rspec-rails'
-gem 'factory_girl_rails'
-gem 'capybara'
+group :development, :test do
+  gem 'rails', '4.2.6'
+  gem 'mysql2'
+  gem 'sass-rails', '~> 5.0'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails', '~> 4.1.0'
+  gem 'jquery-rails'
 
+  gem 'devise'
+
+  gem 'factory_girl_rails'
+end

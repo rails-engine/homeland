@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @page_title %></title>
+  <%= stylesheet_link_tag    "homeland/application", media: "all" %>
+  <%= javascript_include_tag "homeland/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav class="navbar navbar-light bg-faded">
+    <div class="container">
+      <a class="navbar-brand" href="<%= main_app.root_path %>"><%= t('homeland.nav.home') %></a>
+      <ul class="nav navbar-nav main-nav">
+        <li class="nav-item<%= ' active' if controller_name == 'topics' and action_name == 'index' %>">
+          <a class="nav-link" href="<%= homeland.root_path %>"><%= t('homeland.nav.latest') %></a>
+        </li>
+        <li class="nav-item<%= ' active' if controller_name == 'topics' and action_name == 'features' %>">
+          <a class="nav-link" href="<%= homeland.features_topics_path %>"><%= t('homeland.nav.features') %></a>
+        </li>
+        <li class="nav-item<%= ' active' if controller_name == 'topics' and action_name == 'recent' %>">
+          <a class="nav-link" href="<%= homeland.recent_topics_path %>"><%= t('homeland.nav.recent') %></a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav pull-xs-right">
+        <li class="nav-item<%= ' active' if controller_name == 'topics' and action_name == 'new' %>">
+          <a class="nav-link" href="<%= homeland.new_topic_path %>"><%= t('homeland.nav.new') %></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-layout">
+    <div class="container">
+      <%= yield %>
+    </div>
+  </div>
+
+</body>
+</html>

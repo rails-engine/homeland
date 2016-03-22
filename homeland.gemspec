@@ -1,20 +1,23 @@
-# coding: utf-8
+$:.push File.expand_path("../lib", __FILE__)
+
+# Maintain your gem's version:
+require "homeland/version"
+
+# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "homeland"
-  s.version     = "0.0.9"
-  s.platform    = Gem::Platform::RUBY
+  s.version     = Homeland::VERSION
   s.authors     = ["Jason Lee"]
   s.email       = ["huacnlee@gmail.com"]
-  s.homepage    = "http://github.com/huacnlee/homeland"
+  s.homepage    = "https://github.com/huacnlee/homeland"
   s.summary     = "A new style forum for small communitys."
-  s.description = "A new style forum for small communitys."
+  s.description = "A new style forum for tiny community as Rails Engine. You can mount this in you apps."
+  s.license     = "MIT"
 
-  s.required_rubygems_version = ">= 1.3.6"
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency("rails", "> 3.1.0")
-  s.add_dependency("jquery-atwho-rails", "~> 0.1.5")
-  s.add_dependency("rails_autolink", ">= 1.0.0")
-
-  s.files        = Dir.glob("lib/**/*") + Dir.glob("app/**/*") + Dir.glob("config/**/*") + %w(README.md Changelogs.md)
-  s.require_path = 'lib'
+  s.add_dependency 'rails', '~> 4.2.0'
+  s.add_dependency 'activerecord', '~> 4.2.0'
+  s.add_dependency 'github-markup', '>= 1.3.0'
+  s.add_dependency 'redcarpet', '>= 3.3.0'
 end

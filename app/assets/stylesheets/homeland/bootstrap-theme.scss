@@ -1,0 +1,166 @@
+/**
+ * Bootstrap V4 Theme - Apple
+ * Author: Jason Lee <huacnlee@gmail.com>
+ */
+body {
+  font-family: 'PingHei', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+/* Navbar */
+.navbar-light {
+  padding: 0;
+  border-radius: 0 !important;
+  background-color: #FFF;
+  border: 0px !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  color: #A1C3EE;
+
+  .main-nav {
+    .nav-item {
+      margin: 0 !important;
+      a.nav-link {
+        color: #666;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      &.active {
+        a.nav-link {
+          background: #e45735;
+          color: #FFF;
+        }
+      }
+    }
+  }
+}
+
+/* Button & Input */
+.btn, .form-control {
+  border-radius: 3px;
+  outline: none;
+  font-size: 15px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 3px 10px 4px;
+  font-size: 15px;
+  line-height: 20px;
+  transition-property: all;
+  transition-duration: 300ms;
+  outline: none !important;
+}
+
+.btn-lg {
+  padding: .75rem 1.85rem;
+  font-size: 18px;
+  line-height: 1.333333;
+  border-radius: .3rem;
+}
+
+.btn-sm {
+  padding: 2px 8px 3px;
+  font-size: 13px;
+  line-height: 17px;
+}
+
+.btn-xs {
+  padding: 1px 5px 2px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.btn-default {
+  border: 1px solid #ccc;
+  color: #333;
+  background: #FFF;
+  &:hover { background: #f0f0f0; color: #333; }
+  &:active { background: #ddd; }
+}
+
+.form-control {
+  border-radius: 3px;
+  border: 1px solid #d9d9d9;
+  padding: 5px 8px;
+  line-height: 17px;
+
+  &:focus { border-color: #08f; }
+}
+
+select.form-control {
+  height: 30px;
+  padding: 2px 25px 2px 8px;
+}
+
+/* Form */
+p.help-block { font-size: 13px; color: #AAA; }
+
+.form-group {
+  legend { font-size: 17px; color: #666; }
+}
+
+.input-group-addon {
+  padding: 5px 8px;
+  font-size: 13px;
+  line-height: 17px;
+}
+
+/* Modal */
+.modal {
+  .modal-content {
+    h4.title { margin-bottom: 20px; font-size: 15px; }
+    border: 0px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15), 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
+
+    p { margin-bottom: 5px; }
+  }
+  .modal-header {
+    border: 0px;
+    padding-bottom: 0px;
+    .close { margin-top: -8px; font-weight: normal; outline: none !important; }
+    .modal-title {
+      font-size: 16px;
+    }
+  }
+  .modal-footer {
+    border-color: #e5e5e5;
+  }
+}
+
+.modal-backdrop.in {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Alert */
+.alert {
+  padding: 12px;
+  border-radius: 3px; font-size: 14px;
+  h2, h3, h4 { font-size: 16px; font-weight: 500; line-height: 100%; margin:0; padding: 0; margin-bottom: 12px; }
+  ul {
+    padding-left: 18px;
+  }
+}
+.alert .close { font-size: 16px; margin-top: -8px; right: -4px; font-weight: normal; }
+.alert-danger {
+  background: #F7F2F3;
+  color: #C1505D;
+  border-color: #F5E5DD;
+}
+.alert-warning {
+  background: #FEFFE6;
+  border-color: #F3ECE7;
+}
+.alert-success {
+  background: #EEFFE3;
+  border-color: #DAECCF;
+}
+.alert-info {
+  background: #F1F4F9;
+  border-color: #CFD6EC;
+}

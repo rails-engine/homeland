@@ -1,0 +1,13 @@
+<div class="reply media" data-id="<%= reply.id %>">
+  <div class="media-left">
+    <img class="media-object" src="//ruby-china-files.b0.upaiyun.com/user/large_avatar/2.jpg" alt="Generic placeholder image">
+  </div>
+  <div class="media-body">
+    <div class="media-heading">
+      <span class="date pull-xs-right"><%= timeago reply.created_at %></span>
+    </div>
+    <div class="markdown">
+      <%= raw reply.body_html %>
+    </div>
+  </div>
+</div>

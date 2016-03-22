@@ -1,0 +1,26 @@
+en:
+  homeland:
+    nav:
+      home: 'Home'
+      latest: 'Latest'
+      features: 'Features'
+      recent: 'Recent'
+      new: "Compose"
+    topics:
+      empty: 'Ther have no subject created.'
+      type_reply: 'Write your reply here...'
+    submiting: 'Submiting...'
+    submit: 'Submit'
+    cancel: 'Cancel'
+    activerecord:
+      models:
+        topic: "Topic"
+        reply: "Reply"
+      attributes:
+        topic:
+          title: "Subject"
+          body: "Content"
+          node: "Node"
+          replies_count: "Replies"
+          user: "Author"
+          activity: "Activity"

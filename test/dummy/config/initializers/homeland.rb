@@ -1,0 +1,2 @@
+Homeland.configure do
+end

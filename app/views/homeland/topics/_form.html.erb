@@ -1,26 +1,23 @@
 <%= form_for(@topic) do |f| %>
-  <fieldset>
-    <legend><%= @topic.id.blank? ? "新建帖子" : "修改帖子" %></legend>
-    <%= render "homeland/shared/error_messages", :target => @topic %>  
-    <%= f.hidden_field :node_id %>
-    <div class="clearfix">
-      <%= f.label :title %>
-      <div class="input">
-        <span class="span2" style="margin-left:0px;margin-right:10px;">
-          <%= render_topic_node_select_tag(@topic, :style => "width:140px;") %>
-        </span>
-        <%= f.text_field :title, :class => "span6" %>
-      </div>
-    </div>
-    <div class="clearfix">
-      <%= f.label :body %>
-      <div class="input">
-        <%= f.text_area :body, :class => "topic_body_text_area", :style => "height:200px" %>
-      </div>
-    </div>
-    <div class="actions">
-      <input type="submit" value="保存" class="btn btn-primary"> 
-      <a href="<%= @topic.id.blank? ? topics_path : topic_path(@topic) %>" class="btn">取消</a>
-    </div>
-  </fieldset>
+  <%= render_errors @topic %>
+  <%= f.hidden_field :node_id %>
+  <div class="form-group">
+    <%= f.label :node %>
+    <%= f.select :node_id, Homeland::Node.all.collect { |n| [n.name, n.id] }, {}, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control", rows: "10" %>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-lg" data-disable-with="<%= t('homeland.submiting') %>"><%= t('homeland.submit') %></button>
+    <a href="<%= @topic.id.blank? ? homeland.topics_path : homeland.topic_path(@topic) %>" class="btn btn-lg btn-default"><%= t('homeland.cancel') %></a>
+  </div>
 <% end %>

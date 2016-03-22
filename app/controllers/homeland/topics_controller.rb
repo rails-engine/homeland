@@ -1,120 +1,104 @@
 # coding: utf-8
 module Homeland
   class TopicsController < Homeland::ApplicationController
-    before_filter :homeland_require_user, :only => [:new,:edit,:create,:update,:destroy,:reply]
-    before_filter :init_list_sidebar, :only => [:index,:recent,:show,:cate,:search]
-    caches_page :feed, :expires_in => 1.hours
+    before_filter :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :reply]
 
-    private
-    def init_list_sidebar
-     if !fragment_exist? "topic/init_list_sidebar/hot_nodes"
-        @hot_nodes = Node.hots.limit(20)
-      end
-    end
-
-    public
-    # GET /topics
-    # GET /topics.xml
     def index
-      @topics = Topic.last_actived.limit(10).includes(:user)
-      @sections = Section.all
+      @topics = Topic.latest.includes(:user).limit(10)
 
-    end
-
-    def feed
-      @topics = Topic.recent.limit(20)
-      response.headers['Content-Type'] = 'application/rss+xml'
-      render :layout => false
+      set_seo_meta(t("homeland.nav.latest"))
     end
 
     def node
       @node = Node.find(params[:id])
-      @topics = @node.topics.last_actived.includes(:user).paginate(:page => params[:page],:per_page => 50)
+      @topics = @node.topics.latest.includes(:user).limit(50)
 
-      render :action => "index"
+      render action: "index"
     end
 
-    def recent
-      @topics = Topic.recent.limit(50).includes(:user)
+    %w(recent features).each do |action|
+      define_method(action) do
+        @topics = Topic.send(action).includes(:user, :node).limit(20)
 
-      render :action => "index"
+        set_seo_meta(t("homeland.nav.#{action}"))
+
+        render action: "index"
+      end
     end
 
     def show
       @topic = Topic.find(params[:id])
-      @node = @topic.node
-      @replies = @topic.replies.all.includes(:user)
+      @replies = @topic.replies.includes(:user)
+
+      set_seo_meta(@topic.title)
     end
 
-    # GET /topics/new
-    # GET /topics/new.xml
     def new
       @topic = Topic.new
-      if !params[:node].blank?
-        @topic.node_id = params[:node]
-        @node = Node.where(:_id => params[:node]).first
-        if @node.blank?
-          redirect_to "/404"
-        end
-      end
-      @topic.id = nil
+      @node = Node.find_by(id: params[:node_id])
+
+      set_seo_meta(t("homeland.nav.new"))
     end
 
     def reply
       @topic = Topic.find(params[:id])
-      @reply = @topic.replies.build(params[:reply])
+      @reply = @topic.replies.build(reply_params)
       @reply.user_id = current_user.id
       if @reply.save
-        flash[:notice] = "回复成功。"
+        flash[:alert_reply] = "回复成功。"
       else
-        flash[:notice] = @reply.errors.full_messages.join("<br />")
+        flash[:alert_reply] = @reply.errors.full_messages.join("<br />")
       end
       redirect_to topic_path(params[:id],:anchor => "reply")
     end
 
     # GET /topics/1/edit
     def edit
-      @topic = current_user.topics.find(params[:id])
+      @topic = Topic.where(user_id: current_user.id).find(params[:id])
       @node = @topic.node
     end
 
     # POST /topics
     # POST /topics.xml
     def create
-      pt = params[:topic]
-      @topic = Topic.new(pt)
+      @topic = Topic.new(topic_params)
       @topic.user_id = current_user.id
-      @topic.node_id = params[:node] || pt[:node_id]
 
       if @topic.save
-        redirect_to(topic_path(@topic.id), :notice => '帖子创建成功.')
+        redirect_to(topic_path(@topic.id), notice: '帖子创建成功.')
       else
-        render :action => "new"
+        render action: "new"
       end
     end
 
     # PUT /topics/1
     # PUT /topics/1.xml
     def update
-      @topic = current_user.topics.find(params[:id])
-      pt = params[:topic]
-      @topic.node_id = pt[:node_id]
-      @topic.title = pt[:title]
-      @topic.body = pt[:body]
+      @topic = Topic.where(user_id: current_user.id).find(params[:id])
 
-      if @topic.save
-        redirect_to(topic_path(@topic.id), :notice => '帖子修改成功.')
+      if @topic.update_attributes(topic_params)
+        redirect_to(topic_path(@topic.id), notice: '帖子修改成功.')
       else
-        render :action => "edit"
+        render action: "edit"
       end
     end
 
     # DELETE /topics/1
     # DELETE /topics/1.xml
     def destroy
-      @topic = current_user.topics.find(params[:id])
+      @topic = Topic.where(user_id: current_user.id).find(params[:id])
       @topic.destroy
-      redirect_to(topics_path, :notice => '帖子删除成功.')
+      redirect_to(topics_path, notice: '帖子删除成功.')
+    end
+
+    private
+
+    def topic_params
+      params.require(:topic).permit(:node_id, :title, :body)
+    end
+
+    def reply_params
+      params.require(:reply).permit(:body)
     end
   end
 end
