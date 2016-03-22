@@ -1,7 +1,7 @@
 Homeland
 --------
 
-[![Gem Version](https://badge.fury.io/rb/homeland.svg)](https://badge.fury.io/rb/homeland) [![Build Status](https://travis-ci.org/huacnlee/homeland.svg)](https://travis-ci.org/huacnlee/homeland)
+[![Gem Version](https://badge.fury.io/rb/homeland.svg)](https://badge.fury.io/rb/homeland) [![Build Status](https://travis-ci.org/huacnlee/homeland.svg)](https://travis-ci.org/huacnlee/homeland) [![Code Climate](https://codeclimate.com/github/huacnlee/homeland/badges/gpa.svg)](https://codeclimate.com/github/huacnlee/homeland) [![codecov.io](https://codecov.io/github/huacnlee/homeland/coverage.svg?branch=master)](https://codecov.io/github/huacnlee/homeland?branch=master)
 
 > A new style forum for tiny community as Rails Engine. You can mount this in any of you Rails apps.
 
