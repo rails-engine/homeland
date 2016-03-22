@@ -9,6 +9,7 @@ rvm:
   - 2.3.0
 
 before_script:
-  - RAILS_ENV=test rake db:migrate
+  - bundle install
+  - RAILS_ENV=test bundle exec rake db:migrate
 
-script: RAILS_ENV=test rake test
+script: RAILS_ENV=test bundle exec rake
