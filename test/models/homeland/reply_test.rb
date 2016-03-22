@@ -2,8 +2,7 @@ require 'test_helper'
 
 module Homeland
   class ReplyTest < ActiveSupport::TestCase
-    # test "the truth" do
-    #   assert true
-    # end
+    test '.update_topic_last_reply_at' do
+    end
   end
 end

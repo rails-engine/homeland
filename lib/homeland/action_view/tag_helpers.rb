@@ -32,7 +32,9 @@ module Homeland
       def homeland_user_avatar_tag(obj, opts = {})
         default = image_tag(DEFAULT_AVATAR, class: 'avatar media-object')
         return default if obj.blank?
-        if obj.user_avatar_url.blank?
+        return default if obj.user.blank?
+
+        if obj.user_avatar_url == nil
           img = default
         else
           img = image_tag(obj.user_avatar_url, class: 'avatar media-object')

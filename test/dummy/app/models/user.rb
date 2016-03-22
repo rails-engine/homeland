@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
     "/users/#{self.id}"
   end
 
+  def avatar_url
+    "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email)}"
+  end
+
   def admin?
     self.email == 'huacnlee@gmail.com'
   end
