@@ -4,6 +4,8 @@ gemspec
 
 group :development, :test do
   gem 'minitest'
-  gem 'factory_girl_rails'
+  gem 'factory_girl'
   gem 'simplecov'
+
+  gem 'redcarpet'
 end

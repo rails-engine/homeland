@@ -7,9 +7,9 @@ module Homeland
         topic = Topic.new()
         topic.valid?
         html = homeland_render_errors(topic)
-        assert_match /<div class="alert alert-danger">/, html
-        assert_match /Content can&#39;t be blank/, html
-        assert_match /Node can&#39;t be blank/, html
+        assert_match %(<div class="alert alert-danger">), html
+        assert_match %(Content can&#39;t be blank), html
+        assert_match %(Node can&#39;t be blank), html
       end
 
       test 'homeland_timeago' do
