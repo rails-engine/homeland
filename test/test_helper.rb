@@ -11,17 +11,18 @@ ActiveRecord::Migrator.migrations_paths = [
   File.expand_path("../dummy/db/migrate", __FILE__)
 ]
 
-require "rails/test_help"
-require 'minitest/mock'
 require 'simplecov'
-
-FactoryGirl.find_definitions
-
-SimpleCov.start
 if ENV['CI']=='true'
   require 'codecov'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
+SimpleCov.start 'rails' do
+end
+
+require "rails/test_help"
+require 'minitest/mock'
+
+FactoryGirl.find_definitions
 
 Homeland.configure do
   self.user_avatar_method = 'avatar_url'

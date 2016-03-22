@@ -39,6 +39,7 @@ module Homeland
       Time.stub(:now, t) do
         topic.destroy
         assert_equal t.to_i, topic.deleted_at.to_i
+        assert_equal true, topic.deleted?
         assert_nil Topic.find_by(id: topic.id)
         assert_not_nil Topic.unscoped.find_by(id: topic.id)
       end
