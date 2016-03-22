@@ -75,4 +75,4 @@ $ rake homeland:install:migrations
 
 ## Demo App
 
-* [http://720p.so/bbs](http://720p.so/bbs)
+![2016-03-22 10 25 48](https://cloud.githubusercontent.com/assets/5518/13940479/ab9d977a-f018-11e5-870e-aa68b9b2ff1f.png)
