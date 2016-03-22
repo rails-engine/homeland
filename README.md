@@ -34,6 +34,7 @@ Homeland 是基于 Rails Engine 实现的论坛社区 Gem，用于快速开发�
 ```ruby
 # Gemfile
 gem "homeland"
+gem 'font-awesome-sass-rails'
 ```
 
 然后直接 `bundle install` 安装好.

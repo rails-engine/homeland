@@ -1,4 +1,5 @@
 /*
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -49,10 +50,38 @@
   }
 
   .reply {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
 
     .media-left {
       .media-object { width: 48px; height: 48px; border-radius: 180px; }
+    }
+
+    .media-heading {
+      font-size: 14px;
+
+      .date { color: #999; font-size: 13px; }
+    }
+
+    .media-footer {
+      a {
+        line-height: 100%;
+        padding: 6px 8px 8px 8px;
+        font-size: 14px;
+
+        &:link,
+        &:visited,
+        &:active {
+          color: #555;
+          text-decoration: none;
+        }
+
+        &:hover {
+          text-decoration: none;
+          background: #F0F0F0;
+        }
+      }
     }
   }
 }

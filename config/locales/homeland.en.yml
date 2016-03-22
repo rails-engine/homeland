@@ -1,4 +1,16 @@
 en:
+  activerecord:
+    models:
+      homeland/topic: "Topic"
+      homeland/reply: "Reply"
+    attributes:
+      homeland/topic:
+          title: "Subject"
+          body: "Content"
+          node: "Node"
+          replies_count: "Replies"
+          user: "Author"
+          activity: "Activity"
   homeland:
     nav:
       home: 'Home'
@@ -12,15 +24,4 @@ en:
     submiting: 'Submiting...'
     submit: 'Submit'
     cancel: 'Cancel'
-    activerecord:
-      models:
-        topic: "Topic"
-        reply: "Reply"
-      attributes:
-        topic:
-          title: "Subject"
-          body: "Content"
-          node: "Node"
-          replies_count: "Replies"
-          user: "Author"
-          activity: "Activity"
+    reply: 'Reply'

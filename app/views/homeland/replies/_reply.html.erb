@@ -1,4 +1,4 @@
-<div class="reply media" data-id="<%= reply.id %>">
+<div class="reply media" id="reply-<%= reply.id %>" data-id="<%= reply.id %>">
   <div class="media-left">
     <%= homeland_user_avatar_tag(reply) %>
   </div>
@@ -6,10 +6,16 @@
     <div class="media-heading">
       <%= homeland_user_name_tag(reply) %>
 
-      <span class="date pull-xs-right"><%= homeland_timeago reply.created_at %></span>
+      <span class="date pull-xs-right"><i class="fa fa-clock-o"></i> <%= homeland_timeago reply.created_at %></span>
     </div>
     <div class="markdown">
       <%= raw reply.body_html %>
+    </div>
+    <div class="media-footer">
+      <span class="pull-xs-right">
+        <a href="<%= homeland.topic_path(@topic, anchor: "reply-#{reply.id}") %>" class="anchor"><i class="fa fa-link"></i></a>
+        <a href="#" class="reply"><i class="fa fa-reply"></i> <%= t('homeland.reply') %></a>
+      </span>
     </div>
   </div>
 </div>

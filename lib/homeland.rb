@@ -3,6 +3,7 @@ require 'homeland/configuration'
 require 'homeland/markup'
 require 'homeland/action_view/tag_helpers'
 require 'homeland/action_view/will_paginate'
+require 'font-awesome-rails'
 
 module Homeland
   class << self

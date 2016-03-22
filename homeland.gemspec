@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'github-markup', '>= 1.3.0'
   s.add_dependency 'redcarpet', '>= 3.3.0'
   s.add_dependency 'will_paginate', '>= 3.0.0'
+  s.add_dependency 'font-awesome-rails', ">= 4.4.0.0"
 end

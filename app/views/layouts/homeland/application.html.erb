@@ -24,7 +24,7 @@
       </ul>
       <ul class="nav navbar-nav pull-xs-right">
         <li class="nav-item<%= ' active' if controller_name == 'topics' and action_name == 'new' %>">
-          <a class="nav-link" href="<%= homeland.new_topic_path %>"><%= t('homeland.nav.new') %></a>
+          <a class="btn btn-primary-outline" href="<%= homeland.new_topic_path %>"><i class="fa fa-plus"></i> <%= t('homeland.nav.new') %></a>
         </li>
       </ul>
     </div>
