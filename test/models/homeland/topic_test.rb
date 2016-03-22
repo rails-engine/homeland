@@ -27,5 +27,21 @@ module Homeland
       topic.created_at = nil
       assert_equal nil, topic.activity_at
     end
+
+    test '.markdown on save' do
+      topic = create(:topic, body: "Hello *world*")
+      assert_equal topic.body_html, "<p>Hello <em>world</em></p>\n"
+    end
+
+    test 'soft delete' do
+      topic = create(:topic)
+      t = Time.now
+      Time.stub(:now, t) do
+        topic.destroy
+        assert_equal t.to_i, topic.deleted_at.to_i
+        assert_nil Topic.find_by(id: topic.id)
+        assert_not_nil Topic.unscoped.find_by(id: topic.id)
+      end
+    end
   end
 end
