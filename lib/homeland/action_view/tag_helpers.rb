@@ -42,6 +42,20 @@ module Homeland
 
         link_to img, obj.user_profile_url, title: obj.user_name, class: 'user-avatar'
       end
+
+      def notice_message
+        flash_messages = []
+
+        flash.each do |type, message|
+          type = :danger
+          type = :success if type.to_sym == :notice
+          close_button = raw %(<button type="button" class="close" data-dismiss="alert">×</button>)
+          text = content_tag(:div, close_button + message, class: "alert alert-dismissible alert-#{type}")
+          flash_messages << text if message
+        end
+
+        flash_messages.join("\n").html_safe
+      end
     end
   end
 end

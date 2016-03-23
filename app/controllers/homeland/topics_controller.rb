@@ -1,7 +1,9 @@
-# coding: utf-8
 module Homeland
   class TopicsController < Homeland::ApplicationController
-    before_filter :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :reply]
+    before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :reply]
+    before_action only: [:edit, :update, :destroy] do
+      authorize_resource! topic
+    end
 
     def index
       @topics = Topic.latest.includes(:user).page(params[:page])
@@ -45,16 +47,16 @@ module Homeland
       @reply = @topic.replies.build(reply_params)
       @reply.user_id = current_user.id
       if @reply.save
-        flash[:alert_reply] = "回复成功。"
+        flash[:notice] = t('homeland.reply_created')
       else
-        flash[:alert_reply] = @reply.errors.full_messages.join("<br />")
+        flash[:alert] = @reply.errors.full_messages.join("<br />")
       end
       redirect_to topic_path(params[:id],:anchor => "reply")
     end
 
     # GET /topics/1/edit
     def edit
-      @topic = Topic.where(user_id: current_user.id).find(params[:id])
+      @topic = Topic.find(params[:id])
       @node = @topic.node
     end
 
@@ -65,7 +67,7 @@ module Homeland
       @topic.user_id = current_user.id
 
       if @topic.save
-        redirect_to(topic_path(@topic.id), notice: '帖子创建成功.')
+        redirect_to(topic_path(@topic.id), notice: t('homeland.topic_created'))
       else
         render action: "new"
       end
@@ -74,10 +76,10 @@ module Homeland
     # PUT /topics/1
     # PUT /topics/1.xml
     def update
-      @topic = Topic.where(user_id: current_user.id).find(params[:id])
+      @topic = Topic.find(params[:id])
 
       if @topic.update_attributes(topic_params)
-        redirect_to(topic_path(@topic.id), notice: '帖子修改成功.')
+        redirect_to(topic_path(@topic.id), notice: t('homeland.topic_updated'))
       else
         render action: "edit"
       end
@@ -86,12 +88,16 @@ module Homeland
     # DELETE /topics/1
     # DELETE /topics/1.xml
     def destroy
-      @topic = Topic.where(user_id: current_user.id).find(params[:id])
+      @topic = Topic.find(params[:id])
       @topic.destroy
-      redirect_to(topics_path, notice: '帖子删除成功.')
+      redirect_to(topics_path, notice: t('homeland.topic_deleted'))
     end
 
     private
+
+    def topic
+      @topic ||= Topic.find(params[:id])
+    end
 
     def replies
       @topic.replies.includes(:user).page(params[:page])

@@ -1,15 +1,11 @@
-<nav id="reply-panel" style="display:none" class="navbar navbar-fixed-bottom navbar-light bg-faded">
+<nav id="reply-panel">
   <div class="container">
     <%= form_for(Homeland::Reply.new, url: reply_topic_path(@topic.id)) do |f| %>
-      <% if flash[:alert_reply] %>
-      <div class="alert alert-warning"><%= flash[:alert_reply] %></div>
-      <% end %>
-
       <%= f.hidden_field :reply_to_id %>
 
       <div class="row">
         <div class="col-sm-8">
-          <%= f.text_area :body, class: 'form-control', placeholder: t('homeland.topics.type_reply') %>
+          <%= f.text_area :body, class: 'form-control', rows: 5, placeholder: t('homeland.topics.type_reply') %>
         </div>
         <div class="col-sm-2">
           <button type="submit" class="btn btn-primary"><%= t('homeland.submit') %></button>

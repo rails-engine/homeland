@@ -1,1 +1,7 @@
+<ol class="breadcrumb">
+  <li><a href="<%= homeland.root_path %>"><%= t('homeland.nav.home') %></a></li>
+  <li><a href="<%= homeland.topic_path(@topic) %>" title="<%= @topic.title %>"><%= truncate @topic.title, length: 20 %></a></li>
+  <li class="active"><%= t('homeland.nav.edit') %></li>
+</ol>
+
 <%= render 'form' %>

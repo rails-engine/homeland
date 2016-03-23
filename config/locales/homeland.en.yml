@@ -5,19 +5,23 @@ en:
       homeland/reply: "Reply"
     attributes:
       homeland/topic:
-          title: "Subject"
-          body: "Content"
-          node: "Node"
-          replies_count: "Replies"
-          user: "Author"
-          activity: "Activity"
+        title: "Subject"
+        body: "Content"
+        node: "Channel"
+        replies_count: "Replies"
+        user: "Author"
+        activity: "Activity"
+      homeland/reply:
+        body: "Content"
   homeland:
     nav:
-      home: 'Home'
+      home: 'Homeland'
       latest: 'Latest'
       features: 'Features'
       recent: 'Recent'
-      new: "Compose"
+      node: "Channel"
+      new: "New Topic"
+      edit: 'Edit'
     topics:
       empty: 'Ther have no subject created.'
       type_reply: 'Write your reply here...'
@@ -26,3 +30,11 @@ en:
     submit: 'Submit'
     cancel: 'Cancel'
     reply: 'Reply'
+    access_denied: "Access denied."
+    are_you_sure_to_delete: "Are you sure to delete?"
+    topic_created: "Topic created success."
+    topic_updated: "Topic updated success."
+    topic_deleted: "Topic deleted success."
+    reply_created: "Reply created success."
+    reply_deleted: "Reply deleted success."
+    reply_updated: "Reply updated success."

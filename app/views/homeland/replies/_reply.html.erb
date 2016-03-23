@@ -17,6 +17,11 @@ is_reply = reply.respond_to?(:reply_to_id)
     </div>
 
     <div class="media-footer clearfix">
+      <% if owner?(reply) %>
+        <a href="<%= is_reply ? edit_reply_path(reply) : edit_topic_path(reply) %>" class="btn-opt"><i class="fa fa-pencil"></i></a>
+        <a href="<%= is_reply ? reply_path(reply) : topic_path(reply) %>" data-method="DELETE" data-confirm="<%= t('homeland.are_you_sure_to_delete') %>" class="btn-opt"><i class="fa fa-trash"></i></a>
+      <% end %>
+
       <% if is_reply && reply.reply_to_id %>
       <a href="#reply-<%= reply.reply_to_id %>" title="<%= t('homeland.topics.reply_to') %>" class="btn-opt"><i class="fa fa-quote-left"></i></a>
       <% end %>

@@ -1,4 +1,5 @@
 #= require jquery
+#= require jquery_ujs
 #= require homeland/tether.min
 #= require homeland/bootstrap.min
 #= require homeland/jquery.timeago
@@ -13,6 +14,7 @@ window.TopicView =
     target = $(e.currentTarget)
     replyId = target.data('reply-id')
     replyPanel = $('#reply-panel')
+    replyPanel.addClass('navbar navbar-fixed-bottom navbar-light')
     replyPanel.show()
     replyPanel.find('textarea').focus()
     replyPanel.find('input[name="reply[reply_to_id]"]').val(replyId)
