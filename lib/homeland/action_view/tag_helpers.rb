@@ -3,18 +3,18 @@ module Homeland
     module TagHelpers
       DEFAULT_AVATAR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAMAAAAJixmgAAAAFVBMVEWkpKSnp6eqqqq3t7fS0tLV1dXZ2dmshcKEAAAAtklEQVR4Ae3XsRGAAAjAQFRk/5HtqaTz5H+DlInvAQAAAAAAAAAAAAAAAAAAAACymiveO6o7BQsWLFiwYMGCBS8PFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBc4IFCxYsWLBgwYIFC14ZfOeAPRQ8IliwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQv+JQAAAAAAAAAAAAAAAAAAAOAB4KJfdHmj+kwAAAAASUVORK5CYII='
 
-      def homeland_render_errors(target)
+      def render_errors(target)
         if target.errors.present?
           render partial: '/homeland/shared/error_messages', locals: { target: target }
         end
       end
 
-      def homeland_timeago(time, options = {})
+      def timeago(time, options = {})
         options[:class] ||= "timeago"
         content_tag(:abbr, time.to_s, options.merge(:title => time.getutc.iso8601)) if time
       end
 
-      def homeland_node_tag(node)
+      def node_tag(node)
         return '' if node.blank?
 
         label = [node.badge_html, content_tag(:span, node.name, class: 'name')].join(' ')
@@ -22,14 +22,14 @@ module Homeland
         link_to raw(label), homeland.node_topics_path(node.id), class: 'node'
       end
 
-      def homeland_user_name_tag(obj)
+      def user_name_tag(obj)
         return '' if obj.blank?
         return '' if obj.user_name.blank?
 
         link_to obj.user_name, obj.user_profile_url, class: 'user-name'
       end
 
-      def homeland_user_avatar_tag(obj, opts = {})
+      def user_avatar_tag(obj, opts = {})
         default = image_tag(DEFAULT_AVATAR, class: 'avatar media-object')
         return default if obj.blank?
         return default if obj.user.blank?

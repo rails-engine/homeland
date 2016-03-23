@@ -3,13 +3,13 @@ is_reply = reply.respond_to?(:reply_to_id)
 %>
 <div class="reply media" id="reply-<%= reply.id %>" data-id="<%= reply.id %>">
   <div class="media-left">
-    <%= homeland_user_avatar_tag(reply) %>
+    <%= user_avatar_tag(reply) %>
   </div>
   <div class="media-body">
     <div class="media-heading">
-      <%= homeland_user_name_tag(reply) %>
+      <%= user_name_tag(reply) %>
 
-      <span class="date pull-xs-right"><i class="fa fa-clock-o"></i> <%= homeland_timeago reply.created_at %></span>
+      <span class="date pull-xs-right"><i class="fa fa-clock-o"></i> <%= timeago reply.created_at %></span>
     </div>
 
     <div class="markdown">

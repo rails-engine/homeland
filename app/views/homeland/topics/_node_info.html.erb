@@ -1,7 +1,7 @@
 <% if @node %>
 <div class="card">
   <div class="card-block">
-    <h4 class="card-title"><%= homeland_node_tag(@node) %></h4>
+    <h4 class="card-title"><%= node_tag(@node) %></h4>
     <p class="card-text"><%= simple_format @node.description %></p>
     <a href="<%= homeland.new_topic_path %>" class="btn btn-primary"><%= t('homeland.nav.new') %></a>
   </div>
