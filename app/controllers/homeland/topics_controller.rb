@@ -56,7 +56,6 @@ module Homeland
 
     # GET /topics/1/edit
     def edit
-      @topic = Topic.find(params[:id])
       @node = @topic.node
     end
 

@@ -37,6 +37,10 @@ class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 end
 
+class ActionView::TestCase
+  include Rails.application.routes.url_helpers
+end
+
 class ActionDispatch::IntegrationTest
   def sign_in(user)
     post user_session_path \

@@ -21,7 +21,6 @@ module Homeland
         node = Node.new(id: 12, name: "Foo", color: '#90CC11')
         html = node_tag(node)
         assert_equal %(<a class="node" href="#{homeland.node_topics_path(12)}"><i class="node-badge" style="background: #90CC11;"></i> <span class="name">Foo</span></a>), html
-
         assert_equal '', node_tag(nil)
       end
 
