@@ -215,4 +215,27 @@ class TopicsTest < ActionDispatch::IntegrationTest
       assert_equal params[:reply][:body], reply.body
     end
   end
+
+  test 'DELETE /homeland/t/:id' do
+    topic = create(:topic)
+    user1 = create(:user)
+
+    delete "/homeland/t/#{topic.id}"
+    assert_required_user
+
+    sign_in user1
+    delete "/homeland/t/#{topic.id}"
+    assert_access_denied
+  end
+
+  test 'DELETE /homeland/t/:id with correct user' do
+    topic = create(:topic)
+
+    sign_in topic.user
+    delete "/homeland/t/#{topic.id}"
+    topic.reload
+    assert_equal true, topic.deleted?
+    assert_response :redirect, "/homeland/t/"
+    assert_equal 'Topic deleted success.', flash[:notice]
+  end
 end

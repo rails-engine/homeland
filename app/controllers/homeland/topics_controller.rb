@@ -87,8 +87,7 @@ module Homeland
     # DELETE /topics/1
     # DELETE /topics/1.xml
     def destroy
-      @topic = Topic.find(params[:id])
-      @topic.destroy
+      topic.destroy
       redirect_to(topics_path, notice: t('homeland.topic_deleted'))
     end
 
