@@ -1,7 +1,5 @@
-require_dependency "homeland/application_controller"
-
 module Homeland
-  class NodesController < ApplicationController
+  class NodesController < Homeland::ApplicationController
     before_action :authorize_admin!, except: [:index]
     before_action :node, only: [:edit, :update, :destroy]
 

@@ -112,9 +112,11 @@ end
 
 ```
 
-### 如果你有更高级的需要，可以直接生成出 Homeland 的 View 文件，然后按自己的需要定制：
+### 如果你有更高级的需要，可以直接生成出 Homeland 的 Model, Controller, View 文件，然后按自己的需要定制：
 
 ```bash
+$ rails g homeland:models
+$ rails g homeland:controllers
 $ rails g homeland:views
 ```
 
