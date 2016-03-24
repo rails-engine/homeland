@@ -9,7 +9,9 @@ if ENV['CI']=='true'
   require 'codecov'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter 'lib/homeland/version'
+end
 
 require File.expand_path("../dummy/config/environment", __FILE__)
 ActiveRecord::Migrator.migrations_paths = [

@@ -1,3 +1,4 @@
+require "homeland/version"
 require "homeland/engine"
 require 'homeland/configuration'
 require 'homeland/markup'
