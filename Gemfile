@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'devise', '4.0.0.rc1'
+gem 'devise', '4.0.0.rc2'
 gem 'jquery-rails'
 
 group :development, :test do
