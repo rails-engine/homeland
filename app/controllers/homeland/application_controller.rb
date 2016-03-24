@@ -1,6 +1,7 @@
 module Homeland
   class ApplicationController < ::ApplicationController
     helper Homeland::ActionView::WillPaginate
+    helper Homeland::ApplicationHelper
 
     helper_method :current_user, :owner?
 

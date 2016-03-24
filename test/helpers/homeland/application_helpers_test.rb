@@ -2,9 +2,6 @@ require 'test_helper'
 
 module Homeland
   class ApplicationHelpersTest < ::ActionView::TestCase
-    include Rails.application.routes.url_helpers
-    include Homeland::ApplicationHelper
-
     test 'render_errors' do
       topic = Topic.new()
       topic.valid?
@@ -49,7 +46,7 @@ module Homeland
     end
 
     test 'user_avatar_tag' do
-      default_image = %(<img class="avatar media-object" src="#{ApplicationHelper::DEFAULT_AVATAR}" />)
+      default_image = %(<img class="avatar media-object" src="#{Homeland::ApplicationHelper::DEFAULT_AVATAR}" />)
       # nil param
       assert_equal default_image, user_avatar_tag(nil)
 
