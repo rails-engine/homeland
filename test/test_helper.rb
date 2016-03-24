@@ -64,4 +64,14 @@ class ActionDispatch::IntegrationTest
       assert app.controller.user_signed_in?, "login_with_session #{user.email} 没有成功, #{app.flash[:alert]}"
     end
   end
+
+  def assert_required_user
+    assert_response :redirect
+    assert_equal 'You need to sign in or sign up before continuing.', flash[:alert]
+  end
+
+  def assert_access_denied
+    assert_response :redirect
+    assert_equal 'Access denied.', flash[:alert]
+  end
 end

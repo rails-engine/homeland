@@ -134,14 +134,12 @@ class TopicsTest < ActionDispatch::IntegrationTest
     topic = create(:topic, user: @current_user)
 
     get homeland.edit_topic_path(topic)
-    assert_response :redirect
-    assert_equal 'You need to sign in or sign up before continuing.', flash[:alert]
+    assert_required_user
 
     user1 = create(:user)
     sign_in user1
     get "/homeland/t/#{topic.id}/edit"
-    assert_response :redirect
-    assert_equal 'Access denied.', flash[:alert]
+    assert_access_denied
   end
 
   test 'GET /homeland/t/:id/edit with correct user' do
@@ -158,14 +156,12 @@ class TopicsTest < ActionDispatch::IntegrationTest
     topic = create(:topic, user: @current_user)
 
     patch "/homeland/t/#{topic.id}", params: {}
-    assert_response :redirect
-    assert_equal 'You need to sign in or sign up before continuing.', flash[:alert]
+    assert_required_user
 
     user1 = create(:user)
     sign_in user1
     patch "/homeland/t/#{topic.id}", params: {}
-    assert_response :redirect
-    assert_equal 'Access denied.', flash[:alert]
+    assert_access_denied
   end
 
   test 'PUT /homeland/t/:id with correct user' do
@@ -189,5 +185,34 @@ class TopicsTest < ActionDispatch::IntegrationTest
     assert_equal params[:topic][:node_id], topic.node_id
     assert_equal params[:topic][:title], topic.title
     assert_equal params[:topic][:body], topic.body
+  end
+
+  test 'POST /homeland/t/:id/reply' do
+    topic = create(:topic)
+    last_reply = create(:reply, topic: topic)
+    params = {
+      reply: {
+        user_id: 1231,
+        reply_to_id: last_reply.id,
+        body: "Foo bar"
+      }
+    }
+    post "/homeland/t/#{topic.id}/reply", params: params
+    assert_required_user
+
+    sign_in @current_user
+    post "/homeland/t/#{topic.id}/reply", params: { reply: { body: '' } }
+    assert_response :redirect, "/homeland/t/#{topic.id}"
+    assert_equal "Content can't be blank", flash[:alert]
+
+    assert_difference "topic.replies.count", +1 do
+      post "/homeland/t/#{topic.id}/reply", params: params
+      assert_response :redirect, "/homeland/t/#{topic.id}"
+      assert_equal 'Reply created success.', flash[:notice]
+      reply = topic.replies.last
+      assert_equal @current_user.id, reply.user_id
+      assert_equal last_reply.id, reply.reply_to_id
+      assert_equal params[:reply][:body], reply.body
+    end
   end
 end
