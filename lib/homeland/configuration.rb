@@ -1,5 +1,7 @@
 module Homeland
   class Configuration
+    # Markup type, [:markdown, :plain, :html], defualt: :markdown
+    attr_accessor :markup
     # class name of you User model, default: 'User'
     attr_accessor :user_class
 
@@ -57,5 +59,8 @@ module Homeland
 
     # pagination size, default: 32
     attr_accessor :per_page
+
+    # Content markup, allow: [:markdown, :html, :simple], default: :markdown
+    attr_accessor :markup
   end
 end

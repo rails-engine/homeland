@@ -1,10 +1,16 @@
-require 'github/markup'
+require 'homeland/markup/base'
+require 'homeland/markup/html'
+require 'homeland/markup/markdown'
+require 'homeland/markup/simple'
 
 module Homeland
   module Markup
     class << self
-      def render(text)
-        GitHub::Markup.render('text.md', text)
+      # Convert Topic, Reply content with custom format
+      def render(raw)
+        const_name = "Homeland::Markup::#{Homeland.config.markup.to_s.classify}"
+        klass = const_name.constantize
+        klass.render(raw)
       end
     end
   end

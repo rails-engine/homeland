@@ -9,6 +9,7 @@ class HomelandTest < ActiveSupport::TestCase
     assert_instance_of Homeland::Configuration, Homeland.config
 
     config = Homeland.config
+    assert_equal :markdown, config.markup
     assert_equal 'Homeland', config.app_name
     assert_equal 32, config.per_page
     assert_equal 'User', config.user_class

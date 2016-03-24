@@ -7,9 +7,12 @@ require 'font-awesome-rails'
 
 module Homeland
   class << self
+    attr_accessor :markups
+
     def config
       return @config if defined?(@config)
       @config = Configuration.new
+      @config.markup = :markdown
       @config.app_name = 'Homeland'
       @config.per_page = 32
       @config.user_class = 'User'
