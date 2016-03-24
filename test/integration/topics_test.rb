@@ -76,7 +76,7 @@ class TopicsTest < ActionDispatch::IntegrationTest
     sign_in @current_user
     get '/homeland/t/new'
     assert_response :success
-    assert_select "li.active", "New Topic"
+    assert_select "li.active", "New"
     assert_select "form.new_topic" do
       assert_select 'div.form-group select[name=?]', 'topic[node_id]'
       assert_select 'div.form-group input[name=?]', 'topic[title]'
