@@ -39,6 +39,11 @@ end
 
 class ActionView::TestCase
   include Rails.application.routes.url_helpers
+
+  # Fix Helper homeland.root_path
+  def homeland
+    Homeland::Engine.routes.url_helpers
+  end
 end
 
 class ActionDispatch::IntegrationTest

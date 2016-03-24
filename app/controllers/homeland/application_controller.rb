@@ -1,14 +1,11 @@
 module Homeland
   class ApplicationController < ::ApplicationController
-    helper_method :current_user
-
-    helper Homeland::ActionView::TagHelpers
     helper Homeland::ActionView::WillPaginate
+
+    helper_method :current_user, :owner?
 
     alias_method :origin_current_user, Homeland.config.current_user_method.to_sym
     alias_method :origin_authenticate_user!, Homeland.config.authenticate_user_method.to_sym
-
-    helper_method :current_user, :owner?
 
     def current_user
       origin_current_user
