@@ -3,7 +3,7 @@ require 'test_helper'
 module Homeland
   class ApplicationHelpersTest < ::ActionView::TestCase
     include Rails.application.routes.url_helpers
-    include ApplicationHelper
+    include Homeland::ApplicationHelper
 
     test 'render_errors' do
       topic = Topic.new()
