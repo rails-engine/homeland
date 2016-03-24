@@ -9,8 +9,8 @@ zh-CN:
         body: "正文"
         node: "频道"
         replies_count: "回帖量"
-        user: "发帖人"
-        activity: "最后更新"
+        user: "作者"
+        activity: "更新"
       homeland/reply:
         body: "正文"
   homeland:
