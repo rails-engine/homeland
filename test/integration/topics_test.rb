@@ -114,7 +114,7 @@ class TopicsTest < ActionDispatch::IntegrationTest
     replies = create_list(:reply, 4, topic: topic)
     get homeland.topic_path(topic)
     assert_response :success
-    assert_select 'title', :text => topic.title
+    assert_select 'title', text: topic.title
     assert_select 'div.topic-detail' do
       assert_select 'div.reply', 5 do
         assert_select 'a.btn-opt[href=?]', homeland.edit_topic_path(topic), 0
@@ -123,7 +123,7 @@ class TopicsTest < ActionDispatch::IntegrationTest
 
     @session.get "/homeland/t/#{topic.id}"
     @session.assert_response :success
-    @session.assert_select 'title', :text => topic.title
+    @session.assert_select 'title', text: topic.title
     @session.assert_select 'a.btn-opt[href=?]', homeland.edit_topic_path(topic), 1
     @session.assert_select 'a.btn-opt[href=?]', homeland.topic_path(topic), 1 do |doc|
       assert_equal 'DELETE', doc.attr('data-method').value
@@ -142,5 +142,52 @@ class TopicsTest < ActionDispatch::IntegrationTest
     get "/homeland/t/#{topic.id}/edit"
     assert_response :redirect
     assert_equal 'Access denied.', flash[:alert]
+  end
+
+  test 'GET /homeland/t/:id/edit with correct user' do
+    topic = create(:topic, user: @current_user)
+
+    sign_in @current_user
+    get "/homeland/t/#{topic.id}/edit"
+    assert_response :success
+    assert_select '.breadcrumb li.active', text: 'Edit'
+    assert_select 'form.edit_topic'
+  end
+
+  test 'PUT /homeland/t/:id' do
+    topic = create(:topic, user: @current_user)
+
+    patch "/homeland/t/#{topic.id}", params: {}
+    assert_response :redirect
+    assert_equal 'You need to sign in or sign up before continuing.', flash[:alert]
+
+    user1 = create(:user)
+    sign_in user1
+    patch "/homeland/t/#{topic.id}", params: {}
+    assert_response :redirect
+    assert_equal 'Access denied.', flash[:alert]
+  end
+
+  test 'PUT /homeland/t/:id with correct user' do
+    topic = create(:topic, user: @current_user)
+    new_node = create(:node)
+    params = {
+      topic: {
+        user_id: 1213,
+        node_id: new_node.id,
+        title: "The new title",
+        body: "The new body"
+      }
+    }
+
+    sign_in @current_user
+    patch "/homeland/t/#{topic.id}", params: params
+    assert_response :redirect, "/homeland/t/#{topic.id}"
+    assert_equal 'Topic updated success.', flash[:notice]
+    topic.reload
+    assert_equal @current_user.id, topic.user_id
+    assert_equal params[:topic][:node_id], topic.node_id
+    assert_equal params[:topic][:title], topic.title
+    assert_equal params[:topic][:body], topic.body
   end
 end
