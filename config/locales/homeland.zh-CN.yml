@@ -38,3 +38,6 @@ zh-CN:
     reply_created: "回帖创建成功"
     reply_deleted: "话题删除成功"
     reply_updated: "话题修改成功"
+    node_created: "节点创建成功"
+    node_updated: "节点修改成功"
+    node_deleted: "节点删除成功"

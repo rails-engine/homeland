@@ -22,11 +22,16 @@ module Homeland
       @config.user_profile_url_method = 'profile_url'
       @config.authenticate_user_method = 'authenticate_user!'
       @config.current_user_method = 'current_user'
+      @config.node_colors = ['#0E76BD', '#CEA9A9', '#e9dd00', '#222', '#F7941D', '#AB9364', '#76923C', '#33b']
       @config
     end
 
     def configure(&block)
       config.instance_exec(&block)
+    end
+
+    def node_colors
+
     end
   end
 end

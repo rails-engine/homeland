@@ -21,6 +21,9 @@
         <li class="nav-item<%= ' active' if controller_name == 'topics' and action_name == 'recent' %>">
           <a class="nav-link" href="<%= homeland.recent_topics_path %>"><%= t('homeland.nav.recent') %></a>
         </li>
+        <li class="nav-item<%= ' active' if controller_name == 'nodes' %>">
+          <a class="nav-link" href="<%= homeland.nodes_path %>"><%= t('homeland.nav.channels') %></a>
+        </li>
       </ul>
       <ul class="nav navbar-nav pull-xs-right">
         <li class="nav-item<%= ' active' if controller_name == 'topics' and action_name == 'new' %>">

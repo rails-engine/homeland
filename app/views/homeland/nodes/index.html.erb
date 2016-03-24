@@ -1,0 +1,14 @@
+<% if admin? %>
+<ul class="nav nav-pills" style="margin-bottom:20px ">
+  <li class="nav-item">
+    <a class="nav-link active" href="<%= homeland.nodes_path %>"><%= t("homeland.channels") %></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= homeland.new_node_path %>"><%= t("homeland.new_node") %></a>
+  </li>
+</ul>
+<% end %>
+
+<div class="nodes">
+  <%= render @nodes %>
+</div>

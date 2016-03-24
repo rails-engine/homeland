@@ -11,4 +11,5 @@ Homeland::Engine.routes.draw do
     end
   end
   resources :replies, path: 'r'
+  resources :nodes
 end

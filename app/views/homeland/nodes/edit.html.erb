@@ -1,0 +1,8 @@
+<ol class="breadcrumb">
+  <li><a href="<%= homeland.root_path %>"><%= t('homeland.nav.home') %></a></li>
+  <li><a href="<%= homeland.nodes_path %>"><%= t('homeland.nav.channels') %></a></li>
+  <li><a href="<%= homeland.node_topics_path %>"><%= @node.name %></a></li>
+  <li class="active"><%= t('homeland.nav.edit') %></li>
+</ol>
+
+<%= render 'form' %>

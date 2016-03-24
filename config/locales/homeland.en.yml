@@ -20,7 +20,7 @@ en:
       features: 'Features'
       recent: 'Recent'
       node: "Channel"
-      new: "New Topic"
+      new: "New"
       edit: 'Edit'
     topics:
       empty: 'Ther have no subject created.'
@@ -38,3 +38,6 @@ en:
     reply_created: "Reply created success."
     reply_deleted: "Reply deleted success."
     reply_updated: "Reply updated success."
+    node_created: "Channel created success."
+    node_updated: "Channel updated success."
+    node_deleted: "Channel deleted success."

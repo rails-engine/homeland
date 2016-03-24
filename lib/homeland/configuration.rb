@@ -62,5 +62,7 @@ module Homeland
 
     # Content markup, allow: [:markdown, :html, :simple], default: :markdown
     attr_accessor :markup
+
+    attr_accessor :node_colors
   end
 end
