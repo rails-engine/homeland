@@ -3,6 +3,11 @@ require "homeland/engine"
 require 'homeland/configuration'
 require 'homeland/markup'
 require 'homeland/action_view/will_paginate'
+require 'homeland/concerns/markup'
+require 'homeland/concerns/soft_delete'
+require 'homeland/concerns/user_delegates'
+require 'will_paginate'
+require 'will_paginate/active_record'
 require 'font-awesome-rails'
 
 module Homeland

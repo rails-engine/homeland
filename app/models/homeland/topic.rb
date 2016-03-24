@@ -1,9 +1,10 @@
 module Homeland
   class Topic < ActiveRecord::Base
     include Homeland::Concerns::SoftDelete
-    include Homeland::Concerns::MarkdownBody
-    include Homeland::Concerns::UserMethods
-    include Homeland::Concerns::Pagination
+    include Homeland::Concerns::Markup
+    include Homeland::Concerns::UserDelegates
+
+    self.per_page = Homeland.config.per_page
 
     belongs_to :user, class_name: Homeland.config.user_class.to_s
     belongs_to :last_reply_user, class_name: Homeland.config.user_class.to_s

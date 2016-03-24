@@ -4,9 +4,9 @@ module Homeland
       extend ActiveSupport::Concern
 
       included do
-        default_scope -> { where(deleted_at: nil) }
-
         alias_method :destroy!, :destroy
+
+        default_scope -> { where(deleted_at: nil) }
       end
 
       def destroy

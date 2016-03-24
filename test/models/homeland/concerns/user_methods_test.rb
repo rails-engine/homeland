@@ -4,7 +4,7 @@ module Homeland
   module Concerns
     class UserMethodsTest < ActiveSupport::TestCase
       class Monkey
-        include Homeland::Concerns::UserMethods
+        include Homeland::Concerns::UserDelegates
 
         attr_accessor :user
       end

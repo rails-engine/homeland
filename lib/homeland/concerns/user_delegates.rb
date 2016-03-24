@@ -1,6 +1,6 @@
 module Homeland
   module Concerns
-    module UserMethods
+    module UserDelegates
       extend ActiveSupport::Concern
 
       included do

@@ -1,6 +1,6 @@
 module Homeland
   module Concerns
-    module MarkdownBody
+    module Markup
       extend ActiveSupport::Concern
 
       included do
