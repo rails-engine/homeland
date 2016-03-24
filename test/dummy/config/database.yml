@@ -48,6 +48,4 @@ test:
 #
 production:
   <<: *default
-  database: dummary_production
-  username: dummary
-  password: <%= ENV['DUMMARY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['CLEARDB_DATABASE_URL'] %>

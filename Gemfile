@@ -10,6 +10,7 @@ gem 'github-markup'
 gem 'devise', '4.0.0.rc2'
 gem 'jquery-rails'
 gem 'mysql2'
+gem 'puma'
 
 group :development, :test do
   gem 'minitest'
