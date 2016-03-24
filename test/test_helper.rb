@@ -2,22 +2,20 @@
 ENV["RAILS_ENV"] = "test"
 
 require 'factory_girl'
-
 FactoryGirl.definition_file_paths = [File.expand_path('../factories', __FILE__)]
-
-require File.expand_path("../dummy/config/environment", __FILE__)
-ActiveRecord::Migrator.migrations_paths = [
-  File.expand_path('../../db/migrate', __FILE__),
-  File.expand_path("../dummy/db/migrate", __FILE__)
-]
 
 require 'simplecov'
 if ENV['CI']=='true'
   require 'codecov'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
-SimpleCov.start 'rails' do
-end
+SimpleCov.start 'rails'
+
+require File.expand_path("../dummy/config/environment", __FILE__)
+ActiveRecord::Migrator.migrations_paths = [
+  File.expand_path('../../db/migrate', __FILE__),
+  File.expand_path("../dummy/db/migrate", __FILE__)
+]
 
 require "rails/test_help"
 require 'minitest/mock'

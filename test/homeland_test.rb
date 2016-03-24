@@ -4,6 +4,7 @@ class HomelandTest < ActiveSupport::TestCase
   test 'VERSION' do
     assert_not_nil Homeland::VERSION
   end
+
   test '.config' do
     assert_instance_of Homeland::Configuration, Homeland.config
 
