@@ -25,7 +25,7 @@ require 'minitest/mock'
 FactoryGirl.find_definitions
 
 Homeland.configure do
-  self.user_avatar_method = 'avatar_url'
+  self.user_avatar_url_method = 'avatar_url'
 end
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries

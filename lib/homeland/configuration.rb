@@ -18,9 +18,9 @@ module Homeland
     #   end
     # end
     #
-    # config.user_avatar_method = :homeland_avatar_url
+    # config.user_avatar_url_method = :homeland_avatar_url
     #
-    attr_accessor :user_avatar_method
+    attr_accessor :user_avatar_url_method
 
     # method in User model for check user do have permission manage Homeland.
     # default: 'admin?'

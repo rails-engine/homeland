@@ -14,7 +14,7 @@ module Homeland
       @config.per_page = 32
       @config.user_class = 'User'
       @config.user_name_method = 'name'
-      @config.user_avatar_method = nil
+      @config.user_avatar_url_method = nil
       @config.user_admin_method = 'admin?'
       @config.user_profile_url_method = 'profile_url'
       @config.authenticate_user_method = 'authenticate_user!'

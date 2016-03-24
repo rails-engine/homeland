@@ -13,7 +13,7 @@ class HomelandTest < ActiveSupport::TestCase
     assert_equal 32, config.per_page
     assert_equal 'User', config.user_class
     assert_equal 'name', config.user_name_method
-    assert_equal 'avatar_url', config.user_avatar_method
+    assert_equal 'avatar_url', config.user_avatar_url_method
     assert_equal 'admin?', config.user_admin_method
     assert_equal 'profile_url', config.user_profile_url_method
     assert_equal 'authenticate_user!', config.authenticate_user_method
