@@ -22,11 +22,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate', '>= 3.0.0'
   s.add_dependency 'jquery-rails', '>= 4.0.0', '<= 5.1.0'
   s.add_dependency 'font-awesome-rails', ">= 4.4.0.0"
-
-  s.add_development_dependency 'rails', '5.0.0.beta3'
-  s.add_development_dependency 'mysql2'
-  s.add_development_dependency 'sass-rails', '~> 5.0'
-  s.add_development_dependency 'uglifier', '>= 1.3.0'
-  s.add_development_dependency 'coffee-rails', '~> 4.1.0'
-  s.add_development_dependency 'github-markup', '>= 1.3.0'
 end
