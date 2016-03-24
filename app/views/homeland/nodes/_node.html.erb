@@ -6,9 +6,9 @@
     </div>
     <div class="opts">
       <% if admin? %>
-      <a class="btn-opt" href="<%= homeland.edit_node_path(node) %>"><i class="fa fa-pencil"></i></a>
+      <a class="btn-opt edit" href="<%= homeland.edit_node_path(node) %>"><i class="fa fa-pencil"></i></a>
 
-      <a class="btn-opt" href="<%= homeland.node_path(node) %>" data-method="DELETE" data-confirm="<%= t('homeland.are_you_sure_to_delete') %>"><i class="fa fa-trash"></i></a>
+      <a class="btn-opt delete" href="<%= homeland.node_path(node) %>" data-method="DELETE" data-confirm="<%= t('homeland.are_you_sure_to_delete') %>"><i class="fa fa-trash"></i></a>
       <% end %>
     </div>
   </div>

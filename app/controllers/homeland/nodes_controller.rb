@@ -2,11 +2,11 @@ require_dependency "homeland/application_controller"
 
 module Homeland
   class NodesController < ApplicationController
-    before_action :node, only: [:edit, :update, :destroy]
     before_action :authorize_admin!, except: [:index]
+    before_action :node, only: [:edit, :update, :destroy]
 
     def index
-      @nodes = Node.all
+      @nodes = Node.order('sort desc')
     end
 
     def new
@@ -45,7 +45,7 @@ module Homeland
     end
 
     def node_params
-      params.require(:node).permit(:name, :description, :color)
+      params.require(:node).permit(:name, :description, :color, :sort)
     end
   end
 end
