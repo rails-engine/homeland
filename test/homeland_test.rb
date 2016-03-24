@@ -11,7 +11,6 @@ class HomelandTest < ActiveSupport::TestCase
     config = Homeland.config
     assert_equal :markdown, config.markup
     assert_equal 'Homeland', config.app_name
-    assert_equal 32, config.per_page
     assert_equal 'User', config.user_class
     assert_equal 'name', config.user_name_method
     assert_equal 'avatar_url', config.user_avatar_url_method
