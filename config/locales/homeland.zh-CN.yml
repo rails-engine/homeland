@@ -1,8 +1,40 @@
 zh-CN:
+  activerecord:
+    models:
+      homeland/topic: "话题"
+      homeland/reply: "回帖"
+    attributes:
+      homeland/topic:
+        title: "标题"
+        body: "正文"
+        node: "频道"
+        replies_count: "回帖量"
+        user: "发帖人"
+        activity: "最后更新"
+      homeland/reply:
+        body: "正文"
   homeland:
     nav:
-      home: '网站首页'
-      topics: '讨论区'
-    submiting: '提交中...'
+      home: 'Homeland'
+      latest: '话题'
+      features: '精华帖'
+      recent: '最新发布'
+      node: "频道"
+      new: "发帖"
+      edit: '编辑'
+    topics:
+      empty: '没有查到任何话题'
+      type_reply: '在这里输入你要参与回复的内容...'
+      reply_to: "回复"
+    submiting: '提交中，请稍后...'
     submit: '提交'
     cancel: '取消'
+    reply: '回复'
+    access_denied: "拒绝访问."
+    are_you_sure_to_delete: "确定要删除么？"
+    topic_created: "话题创建成功"
+    topic_updated: "话题修改成功"
+    topic_deleted: "话题删除成功"
+    reply_created: "回帖创建成功"
+    reply_deleted: "话题删除成功"
+    reply_updated: "话题修改成功"
