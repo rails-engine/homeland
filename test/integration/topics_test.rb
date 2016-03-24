@@ -142,7 +142,7 @@ class TopicsTest < ActionDispatch::IntegrationTest
     assert_access_denied
   end
 
-  test 'GET /homeland/t/:id/edit with correct user' do
+  test 'GET /homeland/t/:id/edit with owner' do
     topic = create(:topic, user: @current_user)
 
     sign_in @current_user

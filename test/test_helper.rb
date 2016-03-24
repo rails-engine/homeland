@@ -50,18 +50,16 @@ end
 
 class ActionDispatch::IntegrationTest
   def sign_in(user)
-    post user_session_path \
-          "user[email]"    => user.email,
-          "user[password]" => user.password
+    post main_app.user_session_path \
+      "user[email]"    => user.email,
+      "user[password]" => user.password
   end
 
   def sign_in_session(user)
     open_session do |app|
-      app.post user_session_path,
-        params: {
-          'user[email]' => user.email,
-          'user[password]' => user.password
-        }
+      app.post main_app.user_session_path \
+        'user[email]' => user.email,
+        'user[password]' => user.password
       assert app.controller.user_signed_in?, "login_with_session #{user.email} 没有成功, #{app.flash[:alert]}"
     end
   end
