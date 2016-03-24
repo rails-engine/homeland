@@ -15,6 +15,9 @@ module Homeland
         end
       end
 
+      def add_migrations
+        exec("rails homeland:install:migrations")
+      end
     end
   end
 end
