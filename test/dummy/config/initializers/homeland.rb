@@ -2,7 +2,7 @@
 Homeland.configure do
   # self.markup = :markdown
   # self.app_name = 'Homeland'
-  # self.per_page = 32
+  self.per_page = 10
   # self.user_class = 'User'
   # self.user_name_method = 'name'
   self.user_avatar_url_method = :avatar_url
