@@ -37,6 +37,8 @@ Homeland 是基于 Rails Engine 实现的论坛社区 Gem，用于快速开发�
 # Gemfile
 gem "homeland"
 gem 'font-awesome-sass-rails'
+# 如果你用其他 markup 可以不用依赖 github-markup
+gem 'github-markup'
 ```
 
 然后直接 `bundle install` 安装好.
@@ -54,12 +56,64 @@ $ rails g homeland:install
 mount Homeland::Engine, at: "/homeland"
 ```
 
+4. 自定义配置
+
+```ruby
+# config/initializes/homeland.rb
+Homeland.configure do
+  # self.markup = :markdown
+  # self.app_name = 'Homeland'
+  # self.per_page = 32
+  # self.user_class = 'User'
+  # self.user_name_method = 'name'
+  # self.user_avatar_url_method = nil
+  # self.user_admin_method = 'admin?'
+  # self.user_profile_url_method = 'profile_url'
+  # self.authenticate_user_method = 'authenticate_user!'
+  # self.current_user_method = 'current_user'
+end
+```
 
 ### 如果你有更高级的需要，可以直接生成出 Homeland 的 View 文件，然后按自己的需要定制：
 
 ```bash
 $ rails g homeland:views
 ```
+
+## 实现自己的文章内容格式化
+
+Homeland 默认提供: [:markdown, :simple, :html] 几种可选的内容格式化方式，但某些时候你可能会有更多的需求，需要按自己的需要定制。
+
+Homeland 提供的方式让你达到这个目的。
+
+你需要在 `Homeland::Markup` 命名空间下面实现一个新的自定义类，并继承 `Homeland::Markup::Base`，实现 `render` 函数，例如：
+
+新建文件 lib/homeland/markup/ruby_china.rb
+
+```ruby
+module Homeland
+  module Markup
+    class RubyChina < Base
+      class << self
+        def render(raw)
+          # 在这里编写你的详细转换实现
+          YouCustomRender.render(raw)
+        end
+      end
+    end
+  end
+end
+```
+
+需改 config/initializes/homeland.rb
+
+```ruby
+Homeland.configure do
+  self.markup = :ruby_china
+end
+```
+
+然后，Homeland 在转换格式的时候，就会用你的自定义 Markup 来处理了。
 
 ## Demo App
 
