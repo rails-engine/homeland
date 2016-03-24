@@ -20,8 +20,7 @@ en:
       features: 'Features'
       recent: 'Recent'
       node: "Channel"
-      new: "New"
-      edit: 'Edit'
+      new: "New Topic"
     topics:
       empty: 'Ther have no subject created.'
       type_reply: 'Write your reply here...'
@@ -30,6 +29,9 @@ en:
     submit: 'Submit'
     cancel: 'Cancel'
     reply: 'Reply'
+    new: "New"
+    edit: "Edit"
+    delete: "Delete"
     access_denied: "Access denied."
     are_you_sure_to_delete: "Are you sure to delete?"
     topic_created: "Topic created success."

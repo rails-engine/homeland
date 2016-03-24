@@ -49,7 +49,7 @@ class NodesTest < ActionDispatch::IntegrationTest
     assert_select 'form.new_node' do
       assert_select 'input[name=?]', 'node[name]'
     end
-    assert_select '.breadcrumb li.active', text: 'New'
+    assert_select '.breadcrumb li.active', text: 'New Topic'
   end
 
   test 'POST /homeland/nodes without admin' do

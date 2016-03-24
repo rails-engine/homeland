@@ -1,7 +1,7 @@
 <ol class="breadcrumb">
   <li><a href="<%= homeland.root_path %>"><%= t('homeland.nav.home') %></a></li>
   <li><a href="<%= homeland.topic_path(@reply.topic_id) %>" title="<%= @reply.topic.title %>"><%= truncate @reply.topic.title, length: 20 %></a></li>
-  <li class="active"><%= t('homeland.nav.edit') %></li>
+  <li class="active"><%= t('homeland.edit') %></li>
 </ol>
 <%= form_for(@reply) do |f| %>
   <%= render_errors @reply %>

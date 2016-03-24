@@ -21,7 +21,6 @@ zh-CN:
       recent: '最新发布'
       node: "频道"
       new: "发帖"
-      edit: '编辑'
     topics:
       empty: '没有查到任何话题'
       type_reply: '在这里输入你要参与回复的内容...'
@@ -29,6 +28,9 @@ zh-CN:
     submiting: '提交中，请稍后...'
     submit: '提交'
     cancel: '取消'
+    new: "新建"
+    edit: "修改"
+    delete: "删除"
     reply: '回复'
     access_denied: "拒绝访问."
     are_you_sure_to_delete: "确定要删除么？"
