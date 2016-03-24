@@ -11,6 +11,7 @@ if ENV['CI']=='true'
 end
 SimpleCov.start 'rails' do
   add_filter 'lib/homeland/version'
+  add_filter 'lib/generators'
 end
 
 require File.expand_path("../dummy/config/environment", __FILE__)
