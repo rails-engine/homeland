@@ -11,6 +11,7 @@ if ENV['CI']=='true'
 end
 SimpleCov.start 'rails' do
   add_filter 'lib/homeland/version'
+  add_filter 'lib/homeland/action_view/will_paginate'
   add_filter 'lib/generators'
 end
 

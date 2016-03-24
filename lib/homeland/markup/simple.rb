@@ -5,8 +5,6 @@ module Homeland
       class << self
         include ActionView::Helpers::TextHelper
 
-        white_list_sanitizer = []
-
         def render(raw)
           simple_format(raw, {}, sanitize: false)
         end
