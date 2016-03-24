@@ -80,6 +80,12 @@ end
 $ rails g homeland:views
 ```
 
+你也可以通过下面的命令生成默认的 I18n 文件
+
+```bash
+$ rails g homeland:i18n
+```
+
 ## 实现自己的文章内容格式化
 
 Homeland 默认提供: [:markdown, :simple, :html] 几种可选的内容格式化方式，但某些时候你可能会有更多的需求，需要按自己的需要定制。
