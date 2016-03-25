@@ -5,6 +5,8 @@ Homeland
 
 > A new style forum for tiny community as Rails Engine. You can mount this in any of you Rails apps.
 
+演示网站: https://homeland-app.herokuapp.com
+
 我们时常可能需要在各类中小型项目中集成用户社区之类的功能，每次当你需要做这个事情的时候都重头设计实现一遍么？ No, that no the Rails way! Rails 教育我们要 DRY!
 
 Homeland 是基于 Rails Engine 实现的论坛社区 Gem，用于快速开发，类似 Devise 给我们解决账号体系的方案一样。它包含数据库、Model、Controller、Views 以及 UI 细节的完整实现，你只需简单几行就能快速在你的现有项目上面集成起来。
