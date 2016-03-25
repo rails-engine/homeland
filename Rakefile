@@ -20,4 +20,5 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = false
 end
 
+task 'assets:precompile' => 'app:assets:precompile'
 task default: :test
