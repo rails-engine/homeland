@@ -16,7 +16,7 @@
     <%= cache(node, 'topics-recent-5') do %>
       <% node.topics.recent.limit(3).each do |topic| %>
       <div class="item">
-        <%= link_to topic.title, homeland.topic_path(topic.id) %>
+        <%= link_to topic.title, homeland.topic_path(topic) %>
         <%= timeago topic.created_at %>
       </div>
       <% end %>
