@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Homeland::VERSION
   s.authors     = ["Jason Lee"]
   s.email       = ["huacnlee@gmail.com"]
-  s.homepage    = "https://github.com/huacnlee/homeland"
+  s.homepage    = "https://github.com/rails-engine/homeland"
   s.summary     = "A new style forum for small communitys."
   s.description = "A new style forum for tiny community as Rails Engine. You can mount this in you apps."
   s.license     = "MIT"
