@@ -53,14 +53,7 @@ gem 'github-markup'
 $ rails g homeland:install
 ```
 
-3. 在 routes.rb 里面 mount Homeland:
-
-```ruby
-# config/routes.rb
-mount Homeland::Engine, at: "/homeland"
-```
-
-4. 自定义配置
+3. 自定义配置
 
 ```ruby
 # config/initializes/homeland.rb

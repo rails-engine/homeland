@@ -1,7 +1,13 @@
-1.0.0 / Unrelease
+1.0.1 / 2016-05-06
+------------------
+
+- Add route on run install command.
+- Fix migration install bug in Rails 4.x.
+
+1.0.0 / 2016-03-25
 -----------------
 
-- 重写实现正对 ActiveRecord 的支持，重写编写功能，放弃之前的实现。
+- Rewrite for working with ActiveRecord, write all features.
 
 ------------
 

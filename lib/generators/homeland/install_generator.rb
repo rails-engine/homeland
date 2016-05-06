@@ -15,8 +15,12 @@ module Homeland
         end
       end
 
+      def add_routes
+        route 'mount Homeland::Engine, at: "/homeland"'
+      end
+
       def add_migrations
-        exec("rails homeland:install:migrations")
+        exec("rake homeland:install:migrations")
       end
     end
   end
